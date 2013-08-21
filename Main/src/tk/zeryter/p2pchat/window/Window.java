@@ -9,7 +9,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import tk.zeryter.p2pchat.GUITemplateMain;
+import tk.zeryter.p2pchat.P2PChatMain;
 
 
 
@@ -25,7 +25,7 @@ public class Window implements Runnable, ComponentListener {
 
     public void run() {
 
-        URL url = GUITemplateMain.class.getResource("/assets/icon.png");
+        URL url = P2PChatMain.class.getResource("/assets/icon.png");
 
         try {
             icon = ImageIO.read(url);
@@ -49,8 +49,12 @@ public class Window implements Runnable, ComponentListener {
 
     public void componentResized(ComponentEvent e) {
         //Resizes window elements when window size is changed
-        if (window.getHeight() < 200) window.setSize(200,window.getWidth());
-        if (window.getWidth() < 200) window.setSize(window.getWidth(),200);
+        if (window.getWidth() < 200) {
+            window.setSize(200,window.getHeight());
+        }
+        if (window.getHeight() < 200) {
+            window.setSize(window.getWidth(),200);
+        }
         gui.draw(container);
     }
 
