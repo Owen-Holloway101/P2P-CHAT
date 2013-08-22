@@ -42,6 +42,7 @@ public class GUI implements ActionListener {
 
         messagesScroll.setBounds(10,35,container.getWidth() - 120,container.getHeight() - 70);
         messages.setBounds(0,0,messagesScroll.getWidth(),messagesScroll.getHeight());
+        messages.setCaretPosition(messages.getDocument().getLength());
 
         //canvas for painting on
         canvas.setBounds(0,0,container.getWidth(),container.getHeight());
