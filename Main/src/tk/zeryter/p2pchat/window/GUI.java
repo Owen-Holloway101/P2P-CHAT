@@ -17,6 +17,15 @@ public class GUI implements ActionListener {
     JScrollPane messagesScroll;
 
     public void init(Container container) {
+
+        try{
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
         //Initialise things
         messageInput = new JTextField();
         container.add(messageInput);
@@ -24,6 +33,7 @@ public class GUI implements ActionListener {
         container.add(encryptionPass);
 
         messages = new JTextPane();
+        //messages.setEditable(false);
         messagesScroll = new JScrollPane(messages);
         messagesScroll.createVerticalScrollBar();
         container.add(messagesScroll);
@@ -37,12 +47,11 @@ public class GUI implements ActionListener {
 
     public void draw(Container container) {
         //Set the size of objects, runs when the window is resized and on creation
-        messageInput.setBounds(10,container.getHeight() - 30,container.getWidth()-120,20);
-        encryptionPass.setBounds(10,10,container.getWidth()-120,20);
+        messageInput.setBounds(5,container.getHeight() - 35,container.getWidth()-120,30);
+        encryptionPass.setBounds(5,5,container.getWidth()-120,30);
 
-        messagesScroll.setBounds(10,35,container.getWidth() - 120,container.getHeight() - 70);
+        messagesScroll.setBounds(5,35,container.getWidth() - 120,container.getHeight() - 70);
         messages.setBounds(0,0,messagesScroll.getWidth(),messagesScroll.getHeight());
-        messages.setCaretPosition(messages.getDocument().getLength());
 
         //canvas for painting on
         canvas.setBounds(0,0,container.getWidth(),container.getHeight());
