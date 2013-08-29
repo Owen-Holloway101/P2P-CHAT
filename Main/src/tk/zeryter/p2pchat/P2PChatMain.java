@@ -1,8 +1,9 @@
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.Window;
-
 public class P2PChatMain {
+
+    public static Network net = new Network();
+    public static DiscoveryNet discnet = new DiscoveryNet();
 
     public static void main(String[] args) {
         System.out.println("Owen Holloway, GYC");
@@ -15,7 +16,18 @@ public class P2PChatMain {
         System.out.println("www.zeryter.tk");
 
 
-        new Thread(new Window()).start();
+       // new Thread(new Window()).start();
+
+        net.setPort(5555);
+        net.setPACKETSIZE(100);
+        net.setRunning(true);
+        new Thread(net).start();
+
+        discnet.setPort(5555);
+        discnet.setPACKETSIZE(100);
+        discnet.setRunning(true);
+        new Thread(discnet).start();
+
 
     }
 
