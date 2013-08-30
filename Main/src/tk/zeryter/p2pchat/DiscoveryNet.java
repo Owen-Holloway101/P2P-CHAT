@@ -1,6 +1,6 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
-import java.io.IOException;
 import java.net.*;
 
 public class DiscoveryNet implements Runnable{

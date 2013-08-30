@@ -1,4 +1,7 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
+
+import tk.zeryter.p2pchat.window.Window;
 
 public class P2PChatMain {
 
@@ -16,7 +19,7 @@ public class P2PChatMain {
         System.out.println("www.zeryter.tk");
 
 
-       // new Thread(new Window()).start();
+        new Thread(new Window()).start();
 
         net.setPort(5555);
         net.setPACKETSIZE(100);

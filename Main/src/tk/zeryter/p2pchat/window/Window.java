@@ -1,3 +1,4 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat.window;
 
 import java.awt.*;
@@ -33,27 +34,26 @@ public class Window implements Runnable, ComponentListener {
             e.printStackTrace();
         }
 
-        window = new JFrame("Place Holder Text");
-        window.setSize(400, 300);
+        window = new JFrame("P2P-Chat (swarm chat)");
+        window.setSize(600, 600);
         window.add(container);
         container.setBounds(0, 0, window.getWidth(), window.getHeight());
+        gui.init(container);
         window.setResizable(true);
         window.setVisible(true);
         window.setIconImage(icon);
         window.addWindowListener(new WindowMonitor());
         window.addComponentListener(this);
-
-        gui.init(container);
         gui.draw(container);
     }
 
     public void componentResized(ComponentEvent e) {
         //Resizes window elements when window size is changed
-        if (window.getWidth() < 200) {
-            window.setSize(200,window.getHeight());
+        if (window.getWidth() < 400) {
+            window.setSize(400,window.getHeight());
         }
-        if (window.getHeight() < 200) {
-            window.setSize(window.getWidth(),200);
+        if (window.getHeight() < 400) {
+            window.setSize(window.getWidth(),400);
         }
         gui.draw(container);
     }
