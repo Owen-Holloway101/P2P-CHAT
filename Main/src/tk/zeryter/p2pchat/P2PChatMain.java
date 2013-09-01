@@ -1,7 +1,5 @@
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.*;
-
 import javax.swing.*;
 
 public class P2PChatMain {

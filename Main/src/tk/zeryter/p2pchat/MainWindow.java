@@ -1,6 +1,9 @@
-package tk.zeryter.p2pchat.window;
+package tk.zeryter.p2pchat;
+
+import tk.zeryter.p2pchat.window.MainWindowMonitor;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainWindow implements Runnable {
 
@@ -13,8 +16,6 @@ public class MainWindow implements Runnable {
         window.setVisible(true);
         window.addWindowListener(new MainWindowMonitor());
 
-
-
     }
 
 
@@ -22,7 +23,11 @@ public class MainWindow implements Runnable {
 
 class GUI {
 
-    JButton sendMessage, addPeer, encryptionToggle;
+    static JButton sendMessage, addPeer, encryptionToggle;
+
+    static void  test() {
+
+    }
 
 
 }
