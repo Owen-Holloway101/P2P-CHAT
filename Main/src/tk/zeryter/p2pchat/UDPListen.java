@@ -1,4 +1,4 @@
-package tk.zeryter.p2pchat.network;
+package tk.zeryter.p2pchat;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -14,11 +14,8 @@ public class UDPListen {
         String receivedData;
 
         try {
-            // Convert the argument to ensure that is it valid
             System.out.println("Starting up on port: " + port);
-            // Construct the socket
             DatagramSocket socket = new DatagramSocket(port);
-
             System.out.println("Ready to recieve on " + port + " ....");
 
             int discoveryCount = 0;
@@ -57,7 +54,7 @@ public class UDPListen {
 
                     case 'u':
 
-                        System.out.println("User:" + data);
+                        //System.out.println("User:" + data);
 
                         break;
 
@@ -67,20 +64,6 @@ public class UDPListen {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public void run() {
-
-        listenString(port, PACKETSIZE);
-    }
-
-    public void setPort(int port){
-        this.port = port;
-
-    }
-
-    public void setPACKETSIZE(int packetsize) {
-        this.PACKETSIZE = packetsize;
     }
 
     public void setRunning(boolean running) {

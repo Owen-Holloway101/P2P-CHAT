@@ -1,33 +1,144 @@
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.MainWindowMonitor;
-
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
+import java.awt.event.*;
 
-public class MainWindow implements Runnable {
+public class MainWindow implements Runnable, ComponentListener {
 
     JFrame window = new JFrame();
+
+    Container container = new Container();
+
+    WindowMonitor windowMonitor = new WindowMonitor();
+
+    GUI gui = new GUI();
 
     public void run() {
 
         window.setTitle("Place Holder Text");
-        window.setSize(600,500);
+        window.setSize(600, 500);
         window.setVisible(true);
-        window.addWindowListener(new MainWindowMonitor());
+        window.add(container);
 
+        container.setBounds(0, 0, window.getWidth(), window.getHeight());
+
+        gui.init(container);
+        gui.draw(container);
+
+        window.addWindowListener(windowMonitor);
+        window.addComponentListener(this);
     }
 
+    public void componentResized(ComponentEvent e) {
+        gui.draw(container);
+    }
 
+    public void componentMoved(ComponentEvent e) {
+    }
+
+    public void componentShown(ComponentEvent e) {
+    }
+
+    public void componentHidden(ComponentEvent e) {
+    }
 }
 
-class GUI {
+class GUI implements ActionListener {
 
-    static JButton sendMessage, addPeer, encryptionToggle;
+    JButton sendMessage, addPeer, encryptionToggle;
 
-    static void  test() {
+    JTextField messageInput, encryptionPass;
+
+    JScrollPane messagesScroll;
+
+    JTextPane messages, currentPeers, avaliablePeers;
+
+    public void init(Container c) {
+
+        //Initialise things
+        messageInput = new JTextField();
+        c.add(messageInput);
+        encryptionPass = new JTextField();
+        c.add(encryptionPass);
+
+        messages = new JTextPane();
+
+        messages.setEditable(false);
+        messagesScroll = new JScrollPane(messages);
+        messagesScroll.createVerticalScrollBar();
+        c.add(messagesScroll);
+
+        currentPeers = new JTextPane();
+        avaliablePeers = new JTextPane();
+
+
+        sendMessage = new JButton("SEND");
+        c.add(sendMessage);
+        addPeer = new JButton("add peer");
+        c.add(addPeer);
+
+        //Action listeners
+        sendMessage.addActionListener(this);
+        messageInput.addActionListener(this);
+
 
     }
 
+    public void draw(Container c) {
 
+        //Set the size of objects, runs when the window is resized and on creation
+        messageInput.setBounds(0, c.getHeight() - 30, c.getWidth() - 120, 30);
+        encryptionPass.setBounds(0, 0, c.getWidth() - 120, 30);
+
+        messagesScroll.setBounds(0, 30, c.getWidth() - 120, c.getHeight() - 60);
+        messages.setBounds(0, 0, messagesScroll.getWidth(), messagesScroll.getHeight());
+
+        //int max =  messagesScroll.getVerticalScrollBar().getMaximum();
+        //System.out.println(max);
+        //messagesScroll.getVerticalScrollBar().setValue(max);
+
+        sendMessage.setBounds(c.getWidth() - 120, c.getHeight() - 30, 120, 30);
+
+        addPeer.setBounds(c.getWidth() - 120, c.getHeight() / 2 - 50, 120, 30);
+
+        //messages.setCaretPosition(messages.getDocument().getLength());
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == sendMessage | e.getSource() == messageInput) {
+            String input = messageInput.getText();
+
+            if (input.charAt(0) == '/') {
+                if (input.contains("debug")) {
+                    System.out.println("debug messages");
+                }
+            } else {
+                try {
+                    messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(), "You: " + input + "\n", null);
+                } catch (BadLocationException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            messageInput.setText("");
+            messageInput.requestFocus();
+        }
+
+    }
+}
+
+class WindowMonitor extends WindowAdapter implements WindowListener {
+
+    public static boolean running = true;
+
+    public void windowClosing(WindowEvent e) {
+        Window w = e.getWindow();
+        w.setVisible(false);
+        w.dispose();
+        System.exit(0);
+    }
 }

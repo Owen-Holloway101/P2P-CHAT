@@ -1,5 +1,5 @@
 //Owen Holloway GYC
-package tk.zeryter.p2pchat.network;
+package tk.zeryter.p2pchat;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

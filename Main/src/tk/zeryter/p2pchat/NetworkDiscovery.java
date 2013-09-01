@@ -1,8 +1,6 @@
 //Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.network.UDPSend;
-
 public class NetworkDiscovery implements Runnable {
 
     boolean runing = true;
@@ -19,7 +17,7 @@ public class NetworkDiscovery implements Runnable {
                 e.printStackTrace();
             }
 
-            discNet.sendString("255.255.255.255","u:null",5555);
+            discNet.sendString("u:null","255.255.255.255",5555);
 
         }
 
