@@ -60,8 +60,8 @@ public class UDPListen {
                         break;
 
                     case 'm':
-
-                        MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),data,null);
+                        //Append to the messages output
+                        MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),data + '\n',null);
 
                         break;
 
