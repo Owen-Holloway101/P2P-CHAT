@@ -8,8 +8,6 @@ public class UDPListen {
 
     boolean running = true;
 
-    int port, PACKETSIZE;
-
     public void listenString(int port, int PACKETSIZE) {
 
         String receivedData;
@@ -18,8 +16,6 @@ public class UDPListen {
             System.out.println("Starting up on port: " + port);
             DatagramSocket socket = new DatagramSocket(port);
             System.out.println("Ready to recieve on " + port + " ....");
-
-            int discoveryCount = 0;
 
             while (running) {
 
@@ -30,7 +26,7 @@ public class UDPListen {
                 socket.receive(packet);
 
                 // Print the packet
-                System.out.println(packet.getAddress() + ":" + packet.getPort() + ": " + new String(packet.getData()).trim());
+                System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
 
                 receivedData = new String(packet.getData());
 
@@ -72,9 +68,4 @@ public class UDPListen {
             System.out.println(e);
         }
     }
-
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-
 }
