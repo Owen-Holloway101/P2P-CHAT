@@ -1,3 +1,4 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class MainWindow implements Runnable, ComponentListener {
 
     WindowMonitor windowMonitor = new WindowMonitor();
 
-    GUI gui = new GUI();
+    public static GUI gui = new GUI();
 
     public void run() {
 
@@ -117,7 +118,11 @@ class GUI implements ActionListener {
                 if (input.contains("debug")) {
                     System.out.println("debug messages");
                 }
+                if (input.contains("quit")) {
+                    System.exit(0);
+                }
             } else {
+                //TODO send message packet
                 try {
                     messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(), "You: " + input + "\n", null);
                 } catch (BadLocationException e1) {

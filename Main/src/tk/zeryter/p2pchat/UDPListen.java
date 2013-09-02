@@ -1,3 +1,4 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
 import java.net.DatagramPacket;
@@ -29,7 +30,7 @@ public class UDPListen {
                 socket.receive(packet);
 
                 // Print the packet
-                System.out.println(packet.getAddress() + " " + packet.getPort() + ": " + new String(packet.getData()));
+                System.out.println(packet.getAddress() + ":" + packet.getPort() + ": " + new String(packet.getData()).trim());
 
                 receivedData = new String(packet.getData());
 
@@ -55,6 +56,12 @@ public class UDPListen {
                     case 'u':
 
                         //System.out.println("User:" + data);
+
+                        break;
+
+                    case 'm':
+
+                        MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),data,null);
 
                         break;
 
