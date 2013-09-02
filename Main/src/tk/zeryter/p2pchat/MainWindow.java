@@ -55,7 +55,11 @@ class GUI implements ActionListener {
 
     JScrollPane messagesScroll;
 
-    JTextPane messages, currentPeers, avaliablePeers;
+    JTextPane messages, currentPeers;
+
+    JList avaliablePeers = new JList();
+
+    UDPSend messageout = new UDPSend();
 
     public void init(Container c) {
 
@@ -73,8 +77,9 @@ class GUI implements ActionListener {
         c.add(messagesScroll);
 
         currentPeers = new JTextPane();
-        avaliablePeers = new JTextPane();
 
+        avaliablePeers = new JList();
+        c.add(avaliablePeers);
 
         sendMessage = new JButton("SEND");
         c.add(sendMessage);
@@ -105,6 +110,8 @@ class GUI implements ActionListener {
 
         addPeer.setBounds(c.getWidth() - 120, c.getHeight() / 2 - 50, 120, 30);
 
+        avaliablePeers.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 80);
+
         //messages.setCaretPosition(messages.getDocument().getLength());
 
     }
@@ -117,12 +124,26 @@ class GUI implements ActionListener {
             if (input.charAt(0) == '/') {
                 if (input.contains("debug")) {
                     System.out.println("debug messages");
+                    if (Switches.debug) {
+                        Switches.debug = false;
+                    } else {
+                        Switches.debug = true;
+                    }
                 }
                 if (input.contains("quit")) {
                     System.exit(0);
                 }
+                if (input.contains("iptoggle")) {
+                    System.out.println("iptoggle");
+                    if (Switches.ipShow) {
+                        Switches.ipShow = false;
+                    } else {
+                        Switches.ipShow = true;
+                    }
+                }
             } else {
                 //TODO send message packet
+                //messageout.sendString(input,,5555);
                 try {
                     messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(), "You: " + input + "\n", null);
                 } catch (BadLocationException e1) {

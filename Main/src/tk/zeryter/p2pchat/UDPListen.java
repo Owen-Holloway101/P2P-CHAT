@@ -28,6 +28,10 @@ public class UDPListen {
                 // Print the packet
                 System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
 
+                if (Switches.debug) {
+                    MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim() + '\n'),null);
+                }
+
                 receivedData = new String(packet.getData());
 
                 char receivedChar[];
@@ -57,6 +61,8 @@ public class UDPListen {
 
                     case 'm':
                         //Append to the messages output
+                        if (Switches.ipShow) MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),packet.getAddress() + ": ",null);
+                        else MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),"foo: ",null);; //TODO print out user name
                         MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),data + '\n',null);
 
                         break;
