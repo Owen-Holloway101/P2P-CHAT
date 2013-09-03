@@ -2,6 +2,7 @@
 package tk.zeryter.p2pchat;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
@@ -49,7 +50,8 @@ public class MainWindow implements Runnable, ComponentListener {
 
 class GUI implements ActionListener {
 
-    JButton sendMessage, addPeer, encryptionToggle;
+    JButton sendMessage, encryptionToggle;
+    Button  addPeer;
 
     JTextField messageInput, encryptionPass;
 
@@ -59,7 +61,10 @@ class GUI implements ActionListener {
 
     JList avaliablePeers = new JList();
 
+    List test = new List();
+
     UDPSend messageout = new UDPSend();
+
 
     public void init(Container c) {
 
@@ -78,12 +83,14 @@ class GUI implements ActionListener {
 
         currentPeers = new JTextPane();
 
-        avaliablePeers = new JList();
-        c.add(avaliablePeers);
+        //avaliablePeers = new JList();
+        //c.add(avaliablePeers);
+
+        c.add(test);
 
         sendMessage = new JButton("SEND");
         c.add(sendMessage);
-        addPeer = new JButton("add peer");
+        addPeer = new Button("add peer");
         c.add(addPeer);
 
         //Action listeners
@@ -108,9 +115,10 @@ class GUI implements ActionListener {
 
         sendMessage.setBounds(c.getWidth() - 120, c.getHeight() - 30, 120, 30);
 
-        addPeer.setBounds(c.getWidth() - 120, c.getHeight() / 2 - 50, 120, 30);
+        addPeer.setBounds(c.getWidth() - 120, c.getHeight() / 2 - 40, 120, 20);
 
-        avaliablePeers.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 80);
+        //avaliablePeers.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 80);
+        test.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 70);
 
         //messages.setCaretPosition(messages.getDocument().getLength());
 
@@ -140,6 +148,9 @@ class GUI implements ActionListener {
                     } else {
                         Switches.ipShow = true;
                     }
+                }
+                if (input.contains("addNullPeer")) {
+                       test.add("test");
                 }
             } else {
                 //TODO send message packet

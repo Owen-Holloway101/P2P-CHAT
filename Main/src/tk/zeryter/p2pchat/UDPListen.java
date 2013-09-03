@@ -54,8 +54,11 @@ public class UDPListen {
                 switch (receivedChar[0]) {
 
                     case 'u':
-
-                        //System.out.println("User:" + data);
+                        if (!Peers.isAlreadyAvaliable(data)) {
+                            Peers.addAvaliable(data);
+                            MainWindow.gui.test.add(data);
+                            System.out.println("added peer");
+                        }
 
                         break;
 
