@@ -5,12 +5,6 @@ import javax.swing.*;
 
 public class P2PChatMain {
 
-    public static MainWindow mainWindow = new MainWindow();
-
-    public static Network network = new Network();
-
-    public static NetworkDiscovery networkDiscovery = new NetworkDiscovery();
-
     public static void main(String[] args) {
         System.out.println("Owen Holloway, GYC");
         System.out.println(" _____               _   ____         __ _   \n" +
@@ -28,12 +22,6 @@ public class P2PChatMain {
         catch(Exception e){
             e.printStackTrace();
         }
-
-        new Thread(mainWindow).start();
-
-        new Thread(network).start();
-
-        new Thread(networkDiscovery).start();
 
     }
 
