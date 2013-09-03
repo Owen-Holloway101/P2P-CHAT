@@ -23,6 +23,8 @@ public class P2PChatMain {
             e.printStackTrace();
         }
 
+        new Thread(new Frame()).start();
+
     }
 
 }
