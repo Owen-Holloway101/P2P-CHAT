@@ -21,9 +21,7 @@ public class Frame implements Runnable {
 class WindowMonitor extends WindowAdapter implements WindowListener {
 
     public void windowClosing(WindowEvent e) {
-
         System.exit(0);
-
     }
 }
 
