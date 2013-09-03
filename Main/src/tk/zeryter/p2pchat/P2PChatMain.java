@@ -1,12 +1,15 @@
 //Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.Window;
+import javax.swing.*;
 
 public class P2PChatMain {
 
-    public static Network net = new Network();
-    public static DiscoveryNet discnet = new DiscoveryNet();
+    public static MainWindow mainWindow = new MainWindow();
+
+    public static Network network = new Network();
+
+    public static NetworkDiscovery networkDiscovery = new NetworkDiscovery();
 
     public static void main(String[] args) {
         System.out.println("Owen Holloway, GYC");
@@ -18,19 +21,19 @@ public class P2PChatMain {
                            "               |___/                         ");
         System.out.println("www.zeryter.tk");
 
+        try{
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
 
-        new Thread(new Window()).start();
+        new Thread(mainWindow).start();
 
-        net.setPort(5555);
-        net.setPACKETSIZE(100);
-        net.setRunning(true);
-        new Thread(net).start();
+        new Thread(network).start();
 
-        discnet.setPort(5555);
-        discnet.setPACKETSIZE(100);
-        discnet.setRunning(true);
-        new Thread(discnet).start();
-
+        new Thread(networkDiscovery).start();
 
     }
 
