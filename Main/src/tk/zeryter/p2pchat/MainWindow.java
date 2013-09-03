@@ -2,15 +2,13 @@
 package tk.zeryter.p2pchat;
 
 import javax.swing.*;
-import javax.swing.event.ListDataListener;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.*;
 
 public class MainWindow implements Runnable, ComponentListener {
 
-    JFrame window = new JFrame();
+    static JFrame window = new JFrame();
 
     Container container = new Container();
 
@@ -20,7 +18,7 @@ public class MainWindow implements Runnable, ComponentListener {
 
     public void run() {
 
-        window.setTitle("Place Holder Text");
+        window.setTitle("P2P CHAT: no-user");
         window.setSize(600, 500);
         window.setVisible(true);
         window.add(container);
@@ -51,17 +49,15 @@ public class MainWindow implements Runnable, ComponentListener {
 class GUI implements ActionListener {
 
     JButton sendMessage, encryptionToggle;
-    Button  addPeer;
+    Button  addPeer, setUsername;
 
-    JTextField messageInput, encryptionPass;
+    JTextField messageInput, encryptionPass, userName;
 
     JScrollPane messagesScroll;
 
     JTextPane messages, currentPeers;
 
-    JList avaliablePeers = new JList();
-
-    List test = new List();
+    List avaliablePeers = new List();
 
     UDPSend messageout = new UDPSend();
 
@@ -86,17 +82,24 @@ class GUI implements ActionListener {
         //avaliablePeers = new JList();
         //c.add(avaliablePeers);
 
-        c.add(test);
+        c.add(avaliablePeers);
 
         sendMessage = new JButton("SEND");
         c.add(sendMessage);
+
         addPeer = new Button("add peer");
         c.add(addPeer);
+
+        userName = new JTextField();
+        c.add(userName);
+
+        setUsername = new Button("set user name");
+        c.add(setUsername);
 
         //Action listeners
         sendMessage.addActionListener(this);
         messageInput.addActionListener(this);
-
+        setUsername.addActionListener(this);
 
     }
 
@@ -117,8 +120,11 @@ class GUI implements ActionListener {
 
         addPeer.setBounds(c.getWidth() - 120, c.getHeight() / 2 - 40, 120, 20);
 
+        userName.setBounds(c.getWidth() - 120,c.getHeight() / 2 -20,120,20);
+        setUsername.setBounds(c.getWidth() - 120,c.getHeight() / 2,120,20);
+
         //avaliablePeers.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 80);
-        test.setBounds(c.getWidth() - 120,30,120,c.getHeight()/2 - 70);
+        avaliablePeers.setBounds(c.getWidth() - 120, 30, 120, c.getHeight() / 2 - 70);
 
         //messages.setCaretPosition(messages.getDocument().getLength());
 
@@ -132,25 +138,17 @@ class GUI implements ActionListener {
             if (input.charAt(0) == '/') {
                 if (input.contains("debug")) {
                     System.out.println("debug messages");
-                    if (Switches.debug) {
-                        Switches.debug = false;
-                    } else {
-                        Switches.debug = true;
-                    }
+                    Switches.debug = !Switches.debug;
                 }
                 if (input.contains("quit")) {
                     System.exit(0);
                 }
                 if (input.contains("iptoggle")) {
                     System.out.println("iptoggle");
-                    if (Switches.ipShow) {
-                        Switches.ipShow = false;
-                    } else {
-                        Switches.ipShow = true;
-                    }
+                    Switches.ipShow = !Switches.ipShow;
                 }
                 if (input.contains("addNullPeer")) {
-                       test.add("test");
+                       avaliablePeers.add("avaliablePeers");
                 }
             } else {
                 //TODO send message packet
@@ -164,13 +162,16 @@ class GUI implements ActionListener {
             messageInput.setText("");
             messageInput.requestFocus();
         }
+        if (e.getSource() == setUsername) {
+            String uname = userName.getText();
+            MainWindow.window.setTitle("P2P-CHAT: " + uname);
+            Switches.userName = uname;
+        }
 
     }
 }
 
 class WindowMonitor extends WindowAdapter implements WindowListener {
-
-    public static boolean running = true;
 
     public void windowClosing(WindowEvent e) {
         Window w = e.getWindow();

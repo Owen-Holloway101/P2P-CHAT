@@ -29,10 +29,13 @@ public class UDPListen {
                 System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
 
                 if (Switches.debug) {
-                    MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim() + '\n'),null);
+                    MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(), (packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim() + '\n'), null);
                 }
 
                 receivedData = new String(packet.getData());
+
+                String address = packet.getAddress().toString();
+                address = address.substring(1);
 
                 char receivedChar[];
                 int charsRecived;
@@ -54,19 +57,24 @@ public class UDPListen {
                 switch (receivedChar[0]) {
 
                     case 'u':
-                        if (!Peers.isAlreadyAvaliable(data)) {
-                            Peers.addAvaliable(data);
-                            MainWindow.gui.test.add(data);
-                            System.out.println("added peer");
+                        if (!(data.contains("null") || Switches.userName.equals(data))) {
+                            if (!Peers.isAlreadyAvaliable(data) ) {
+                                Peers.addAvaliable(data,address);
+                                MainWindow.gui.avaliablePeers.add(data);
+                                System.out.println("added peer");
+                            }
                         }
-
                         break;
 
                     case 'm':
                         //Append to the messages output
-                        if (Switches.ipShow) MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),packet.getAddress() + ": ",null);
-                        else MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),"foo: ",null);; //TODO print out user name
-                        MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(),data + '\n',null);
+                        if (Switches.ipShow)
+                            MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(), packet.getAddress() + ": ", null);
+                            //TODO print out user name
+                        else
+                            MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(), "foo: ", null);
+
+                        MainWindow.gui.messages.getStyledDocument().insertString(MainWindow.gui.messages.getStyledDocument().getLength(), data + '\n', null);
 
                         break;
 

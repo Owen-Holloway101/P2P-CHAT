@@ -17,7 +17,7 @@ public class NetworkDiscovery implements Runnable {
                 e.printStackTrace();
             }
 
-            discNet.sendString("u:null","127.255.255.255",5555);
+            discNet.sendString("u:" + Switches.userName,"127.255.255.255",5555);
 
         }
 

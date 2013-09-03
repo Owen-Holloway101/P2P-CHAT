@@ -5,19 +5,23 @@ import java.util.ArrayList;
 public class Peers {
 
     static ArrayList<String> avaliable = new ArrayList<String>();
-    static ArrayList<String> addresses = new ArrayList<String>();
+    static ArrayList<String> avaliableAddress = new ArrayList<String>();
     static ArrayList<String> connected = new ArrayList<String>();
+    static ArrayList<String> connectedAddress = new ArrayList<String>();
 
     public static void addConnected(String peer, String address) {
 
         connected.add(peer);
-        addresses.add(address);
+        avaliableAddress.add(address);
 
     }
 
-    public static void addAvaliable(String peer) {
+    public static void addAvaliable(String peer, String address) {
 
         avaliable.add(peer);
+        avaliableAddress.add(address);
+
+        System.out.println("added:" + address + ":" + peer);
 
     }
 
@@ -64,7 +68,7 @@ public class Peers {
         for (int i = 0; i < connected.size(); i++) {
             if (peer.equals(connected.get(i))) {
                  connected.remove(i);
-                addresses.remove(i);
+                 connectedAddress.remove(i);
             }
         }
 
@@ -75,6 +79,7 @@ public class Peers {
         for (int i = 0; i < avaliable.size(); i++) {
             if (peer.equals(avaliable.get(i))) {
                 avaliable.remove(i);
+                avaliableAddress.remove(i);
             }
         }
 
