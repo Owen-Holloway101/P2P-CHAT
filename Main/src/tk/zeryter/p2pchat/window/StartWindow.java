@@ -1,20 +1,34 @@
 package tk.zeryter.p2pchat.window;
 
+import tk.zeryter.p2pchat.P2PChatMain;
 import tk.zeryter.p2pchat.Vairables;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.URL;
 
 public class StartWindow implements Runnable, ActionListener {
 
     JFrame frame = new JFrame();
+    Image icon;
 
     public void run() {
 
-        frame.setSize(400,150);
+        URL url = P2PChatMain.class.getResource("/assets/icon.png");
+
+        try {
+            icon = ImageIO.read(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        frame.setSize(450,150);
         frame.setTitle("P2P-CHAT by Owen Holloway GYC (ZerytSoft)");
+        frame.setIconImage(icon);
         frame.setVisible(true);
         frame.addWindowListener(new StartWindowMonitor());
         frame.setResizable(false);
@@ -59,7 +73,7 @@ public class StartWindow implements Runnable, ActionListener {
         c.add(portPrompt);
         defaultPortPrompt = new JTextArea();
         defaultPortPrompt.setEditable(false);
-        defaultPortPrompt.setText("Default port");
+        defaultPortPrompt.setText("Default port: ");
         defaultPortPrompt.setBackground(Color.GRAY);
         c.add(defaultPortPrompt);
 
@@ -74,11 +88,11 @@ public class StartWindow implements Runnable, ActionListener {
 
         startChatting.setBounds(280,80,100,30);
 
-        uName.setBounds(110,10,270,20);
-        uNamePrompt.setBounds(10,10,100,20);
+        uName.setBounds(160,10,270,20);
+        uNamePrompt.setBounds(10,10,150,20);
 
-        defaultPort.setBounds(110,50,20,20);
-        defaultPortPrompt.setBounds(10, 50, 100, 20);
+        defaultPort.setBounds(160,50,20,20);
+        defaultPortPrompt.setBounds(10, 50, 150, 20);
 
         portPrompt.setBounds(10, 90, 100, 20);
 

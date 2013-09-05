@@ -16,6 +16,7 @@ public class P2PChatMain {
                            "/____\\___|_|   \\__, |\\__|____/ \\___/|_|  \\__|\n" +
                            "               |___/                         ");
         System.out.println("www.zeryter.tk");
+        System.out.println("https://github.com/Owen-Holloway101/P2P-CHAT");
 
         try{
             UIManager.setLookAndFeel(
@@ -24,7 +25,7 @@ public class P2PChatMain {
         catch(Exception e){
             e.printStackTrace();
         }
-
+        Vairables.netSend.sendString((byte) 5,"This is a test","10.1.1.1",5555);
         new Thread(Vairables.startWindow).start();
 
     }
