@@ -1,6 +1,8 @@
 //Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
+import tk.zeryter.p2pchat.window.StartWindow;
+
 import javax.swing.*;
 
 public class P2PChatMain {
@@ -23,7 +25,7 @@ public class P2PChatMain {
             e.printStackTrace();
         }
 
-        new Thread(new Frame()).start();
+        new Thread(Vairables.startWindow).start();
 
     }
 
