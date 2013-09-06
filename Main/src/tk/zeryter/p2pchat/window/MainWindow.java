@@ -46,11 +46,11 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
     }
 
     JMenuBar menuBar;
-    JMenu file, options, help;
+    JMenu file, edit, help;
     //File menu items
     JMenuItem quit;
-    //Options menu items
-
+    //edit menu items
+    JMenuItem encryption;
     //Help menu items
     JMenuItem about;
 
@@ -59,7 +59,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         menuBar = new JMenuBar();
         menuBar.setBounds(0,0, rootContainer.getWidth(),20);
         file = new JMenu(" File ");
-        options = new JMenu(" Options ");
+        edit = new JMenu(" Edit ");
         help = new JMenu(" Help ");
 
         menuBar.add(file);
@@ -71,11 +71,14 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         //Add to file
         file.add(quit);
 
-        menuBar.add(options);
+        menuBar.add(edit);
 
-        //Options Menu items
+        //edit Menu items
+        encryption = new JMenuItem("Encryption");
+        encryption.addActionListener(this);
 
-        //Add to options
+        //Add to edit
+        edit.add(encryption);
 
         menuBar.add(help);
 
@@ -111,6 +114,11 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         if (e.getSource() == quit) {
             System.exit(0);
         }
+
+        if (e.getSource() == encryption) {
+            new Thread(Vairables.encryptionWindow).start();
+        }
+
         if (e.getSource() == about) {
             new Thread(Vairables.aboutWindow).start();
         }

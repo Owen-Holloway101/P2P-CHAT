@@ -25,7 +25,7 @@ public class AboutWindow implements Runnable, ActionListener {
             e.printStackTrace();
         }
 
-        frame.setSize(250,280);
+        frame.setSize(250,320);
         frame.setTitle("About");
         frame.setIconImage(icon);
         frame.setVisible(true);
@@ -85,7 +85,7 @@ class AboutWindowCanvas extends Canvas {
     public void paint(Graphics g){
         g.drawString("Owen Holloway GYC",40,15);
         g.drawString("P2P-CHAT (zerytsoft)",40,30);
-
+        g.drawString("github.com/Owen-Holloway101",10,48);
         g.drawImage(icon,this.getWidth()/2-(icon.getHeight(this)/2),this.getHeight()/2-(icon.getWidth(this)/2),this);
 
     }

@@ -25,6 +25,7 @@ public class P2PChatMain {
         catch(Exception e){
             e.printStackTrace();
         }
+
         Vairables.netSend.sendString((byte) 5,"This is a test","10.1.1.1",5555);
         new Thread(Vairables.startWindow).start();
 
