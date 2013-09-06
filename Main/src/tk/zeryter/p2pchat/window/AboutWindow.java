@@ -15,6 +15,8 @@ public class AboutWindow implements Runnable, ActionListener {
 
     Image icon;
 
+    public static boolean reopened = false;
+
     public void run() {
 
         URL url = P2PChatMain.class.getResource("/assets/icon.png");
@@ -37,7 +39,14 @@ public class AboutWindow implements Runnable, ActionListener {
         frame.add(c);
         c.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
-        gui_init(c);
+        if (AboutWindow.reopened) {
+            gui_reinit(c);
+        } else {
+
+            gui_init(c);
+            reopened = true;
+        }
+
         gui_draw(c);
 
         frame.validate();
@@ -54,7 +63,10 @@ public class AboutWindow implements Runnable, ActionListener {
         canvas.setImages();
         c.add(canvas);
 
+    }
 
+    void  gui_reinit(Container c){
+        frame.setVisible(true);
     }
 
     void gui_draw(Container c) {
@@ -74,7 +86,8 @@ class AboutWindowMonitor extends WindowAdapter implements WindowListener {
 
     public void windowClosing(WindowEvent e) {
         Window w = e.getWindow();
-        w.dispose();
+        //w.dispose();
+        w.setVisible(false);
     }
 }
 

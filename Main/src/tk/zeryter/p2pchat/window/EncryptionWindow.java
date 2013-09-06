@@ -90,6 +90,9 @@ public class EncryptionWindow implements Runnable, ActionListener {
 
     void gui_reinit(Container c) {
 
+        frame.setVisible(true);
+
+        /*
         frame.remove(c);
         frame.add(c);
 
@@ -119,7 +122,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
         }
 
         c.add(pass);
-
+        */
     }
 
     void gui_draw(Container c) {
@@ -162,7 +165,8 @@ class EncryptionWindowMonitor extends WindowAdapter implements WindowListener {
 
     public void windowClosing(WindowEvent e) {
         Window w = e.getWindow();
-        w.dispose();
+        //w.dispose();
+        w.setVisible(false);
     }
 }
 
