@@ -86,12 +86,12 @@ public class StartWindow implements Runnable, ActionListener {
 
         c.setBounds(0,0,frame.getWidth(),frame.getHeight());
 
-        startChatting.setBounds(280,80,100,30);
+        startChatting.setBounds(280,80,150,30);
 
         uName.setBounds(160,10,270,20);
         uNamePrompt.setBounds(10,10,150,20);
 
-        defaultPort.setBounds(160,50,20,20);
+        defaultPort.setBounds(160,45,30,30);
         defaultPortPrompt.setBounds(10, 50, 150, 20);
 
         portPrompt.setBounds(10, 90, 100, 20);

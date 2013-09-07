@@ -1,9 +1,6 @@
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.AboutWindow;
-import tk.zeryter.p2pchat.window.EncryptionWindow;
-import tk.zeryter.p2pchat.window.MainWindow;
-import tk.zeryter.p2pchat.window.StartWindow;
+import tk.zeryter.p2pchat.window.*;
 
 public class Vairables {
 
@@ -18,6 +15,7 @@ public class Vairables {
     public static MainWindow mainWindow = new MainWindow();
     public static AboutWindow aboutWindow = new AboutWindow();
     public static EncryptionWindow encryptionWindow = new EncryptionWindow();
+    public static PeersWindow peersWindow = new PeersWindow();
 
     //other class instances
     public static NetSend netSend = new NetSend();

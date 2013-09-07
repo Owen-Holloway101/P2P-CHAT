@@ -10,7 +10,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.net.URL;
 
-public class EncryptionWindow implements Runnable, ActionListener {
+public class PeersWindow implements Runnable, ActionListener {
 
     JFrame frame = new JFrame();
 
@@ -32,7 +32,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
         frame.setTitle("Encryption");
         frame.setIconImage(icon);
         frame.setVisible(true);
-        frame.addWindowListener(new EncryptionWindowMonitor());
+        frame.addWindowListener(new PeersWindowMonitor());
         frame.setResizable(false);
         frame.requestFocus();
         Container c = new Container();
@@ -43,7 +43,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
             gui_reinit(c);
         } else {
 
-        gui_init(c);
+            gui_init(c);
             reopened = true;
         }
         gui_draw(c);
@@ -129,7 +129,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
     }
 }
 
-class EncryptionWindowMonitor extends WindowAdapter implements WindowListener {
+class PeersWindowMonitor extends WindowAdapter implements WindowListener {
 
     public void windowClosing(WindowEvent e) {
         Window w = e.getWindow();
