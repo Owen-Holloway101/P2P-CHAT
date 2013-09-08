@@ -5,6 +5,7 @@ import tk.zeryter.p2pchat.Vairables;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -54,6 +55,16 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
     //Help menu items
     JMenuItem about;
 
+    //GUI widgets
+
+    JScrollPane messagesScroll;
+
+    JTextPane messages;
+
+    JTextField messageInput;
+
+    JButton messageSend;
+
     void gui_init() {
 
         menuBar = new JMenuBar();
@@ -89,8 +100,22 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         //add to Help
         help.add(about);
 
-
         rootContainer.add(menuBar);
+
+        //Widgets
+        messages = new JTextPane();
+        messages.setEditable(false);
+        messagesScroll = new JScrollPane(messages);
+        messagesScroll.createVerticalScrollBar();
+        widgetsContainer.add(messagesScroll);
+
+        messageInput = new JTextField();
+        messageInput.addActionListener(this);
+        widgetsContainer.add(messageInput);
+
+        messageSend = new JButton("SEND");
+        messageSend.addActionListener(this);
+        widgetsContainer.add(messageSend);
 
         gui_draw();
 
@@ -103,13 +128,37 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
         menuBar.setBounds(0,0, rootContainer.getWidth(),20);
 
-        widgetsContainer.setBounds(0,20,rootContainer.getWidth(),rootContainer.getHeight()-201);
+        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-2,rootContainer.getHeight()-20);
 
         //Wiget Resizing
 
+        messagesScroll.setBounds(0,0,widgetsContainer.getWidth(),widgetsContainer.getHeight() - 60);
+        messages.setBounds(0,0,messagesScroll.getWidth(),messagesScroll.getHeight());
+
+        messageInput.setBounds(0,widgetsContainer.getHeight() - 60,widgetsContainer.getWidth() - 80,30);
+        messageSend.setBounds(widgetsContainer.getWidth() - 80,widgetsContainer.getHeight() - 60,80,30);
+
+        messageInput.requestFocus();
     }
 
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == messageSend | e.getSource() == messageInput) {
+            if (!(messageInput.getText().equals(""))) {
+
+                if (messageInput.getText().charAt(0) == '/') {
+
+                } else {
+                    try {
+                        messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
+                    } catch (BadLocationException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                messageInput.setText("");
+                messageInput.requestFocus();
+            }
+        }
 
         if (e.getSource() == quit) {
             System.exit(0);

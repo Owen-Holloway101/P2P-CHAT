@@ -5,6 +5,7 @@ import tk.zeryter.p2pchat.Vairables;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -76,14 +77,14 @@ public class EncryptionWindow implements Runnable, ActionListener {
             pass = new JTextArea();
             pass.setBackground(Color.green);
             pass.setEditable(false);
-            //pass.setText(Vairables.encryptionPass);
+            pass.setText(Vairables.encryptionPass);
         } else {
             pass = new JTextArea();
             pass.setBackground(Color.red);
             pass.setEditable(true);
-            //pass.setText(Vairables.encryptionPass);
+            pass.setText(Vairables.encryptionPass);
         }
-
+        pass.setBorder(new BevelBorder(1));
         c.add(pass);
 
     }
@@ -124,7 +125,6 @@ public class EncryptionWindow implements Runnable, ActionListener {
                 pass.setEditable(true);
                 pass.setText(Vairables.encryptionPass);
             }
-
         }
     }
 }
