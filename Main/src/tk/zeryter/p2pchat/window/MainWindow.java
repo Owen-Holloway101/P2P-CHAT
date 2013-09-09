@@ -129,7 +129,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
         menuBar.setBounds(0,0, rootContainer.getWidth(),20);
 
-        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-2,rootContainer.getHeight()-20);
+        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-16,rootContainer.getHeight()-30);
 
         //Wiget Resizing
 
@@ -150,10 +150,32 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
                 if (messageInput.getText().charAt(0) == '/') {
 
                 } else {
-                    try {
-                        messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
-                    } catch (BadLocationException e1) {
-                        e1.printStackTrace();
+                    if (Vairables.encryptionToggled){
+
+                        String temp_message = messageInput.getText();
+
+                        String encoded_message = Vairables.crypt.code(temp_message,Vairables.encryptionPass);
+                        String decoded_message = Vairables.crypt.decode(encoded_message,Vairables.encryptionPass);
+                        /*
+                        try {
+                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"Encoded: " + encoded_message + '\n',null);
+                        } catch (BadLocationException e1) {
+                            e1.printStackTrace();
+                        }
+                        */
+                        try {
+                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + decoded_message + '\n',null);
+                        } catch (BadLocationException e1) {
+                            e1.printStackTrace();
+                        }
+
+                    } else {
+                        try {
+                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
+                        } catch (BadLocationException e1) {
+                            e1.printStackTrace();
+                        }
+
                     }
                 }
                 messageInput.setText("");

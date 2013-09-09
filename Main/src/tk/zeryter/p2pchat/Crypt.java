@@ -5,17 +5,17 @@ public class Crypt {
 
     public String code(String message, String pass) {
 
-        char messageChar[] = new char[message.length()];
-        char passChar[] = new char[message.length()];
-        char codedChar[] = new char[message.length()];
+        char passChar[] = new char[message.length() + 1];
+        char codedChar[] = new char[message.length() + 1];
 
         int passcharPos = 0;
+
 
         for (int i = 0; i < message.length(); i++) {
 
             passChar[i] = pass.charAt(passcharPos);
 
-            if (passcharPos == pass.length()) {
+            if (passcharPos == pass.length() - 1) {
                 passcharPos = 0;
             } else {
                 passcharPos++;
@@ -23,11 +23,7 @@ public class Crypt {
         }
 
         for (int i = 0; i < message.length(); i++) {
-            messageChar[i] = message.charAt(i);
-
-            int temp_int = ((int) messageChar[i] + (int) passChar[i]);
-            codedChar[i] = (char) temp_int;
-
+            codedChar[i] = (char)((((message.charAt(i)) - passChar[i]) - pass.charAt(pass.length() - 1)*(message.length()-i))-pass.charAt(0)*i);
         }
 
         String output = "";
@@ -43,7 +39,6 @@ public class Crypt {
 
     public String decode(String message, String pass) {
 
-        char messageChar[] = new char[message.length()];
         char passChar[] = new char[message.length()];
         char codedChar[] = new char[message.length()];
 
@@ -53,7 +48,7 @@ public class Crypt {
 
             passChar[i] = pass.charAt(passcharPos);
 
-            if (passcharPos == pass.length()) {
+            if (passcharPos == pass.length() - 1) {
                 passcharPos = 0;
             } else {
                 passcharPos++;
@@ -61,11 +56,7 @@ public class Crypt {
         }
 
         for (int i = 0; i < message.length(); i++) {
-            messageChar[i] = message.charAt(i);
-
-            int temp_int = ((int) messageChar[i] - (int) passChar[i]);
-            codedChar[i] = (char) temp_int;
-
+            codedChar[i] = (char)((((message.charAt(i)) + pass.charAt(0)*i ) + (pass.charAt(pass.length() - 1)*(message.length()-i))) + passChar[i]);
         }
 
         String output = "";

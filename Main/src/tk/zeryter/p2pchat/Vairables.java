@@ -19,5 +19,6 @@ public class Vairables {
 
     //other class instances
     public static NetSend netSend = new NetSend();
+    public static Crypt crypt = new Crypt();
 
 }
