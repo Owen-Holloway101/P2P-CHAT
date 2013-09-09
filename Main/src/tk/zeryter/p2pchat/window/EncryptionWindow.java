@@ -41,7 +41,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
         c.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         if (EncryptionWindow.reopened) {
-            gui_reinit(c);
+            gui_reinit();
         } else {
 
         gui_init(c);
@@ -84,12 +84,12 @@ public class EncryptionWindow implements Runnable, ActionListener {
             pass.setEditable(true);
             pass.setText(Vairables.encryptionPass);
         }
-        pass.setBorder(new BevelBorder(1));
+        pass.setBorder(new BevelBorder(BevelBorder.LOWERED));
         c.add(pass);
 
     }
 
-    void gui_reinit(Container c) {
+    void gui_reinit() {
 
         frame.setVisible(true);
     }

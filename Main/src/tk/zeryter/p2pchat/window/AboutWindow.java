@@ -40,7 +40,7 @@ public class AboutWindow implements Runnable, ActionListener {
         c.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         if (AboutWindow.reopened) {
-            gui_reinit(c);
+            gui_reinit();
         } else {
 
             gui_init(c);
@@ -65,7 +65,7 @@ public class AboutWindow implements Runnable, ActionListener {
 
     }
 
-    void  gui_reinit(Container c){
+    void  gui_reinit(){
         frame.setVisible(true);
     }
 
