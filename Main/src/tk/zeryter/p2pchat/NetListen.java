@@ -36,6 +36,15 @@ public class NetListen {
                 // Print the packet
                 System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
 
+                if (Vairables.encryptionToggled) {
+                    System.out.println(Vairables.crypt.decode(new String(packet.getData()).trim(),Vairables.encryptionPass));
+                }
+
             }
     }
+
+    public void packetRecieved(String address, String packet) {
+
+    }
+
 }

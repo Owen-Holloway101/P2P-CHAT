@@ -26,7 +26,9 @@ public class P2PChatMain {
             e.printStackTrace();
         }
 
-        Vairables.netSend.sendString((byte) 5,"This is a test","10.1.1.1",5555);
+        new Thread(Vairables.listen).start();
+
+        Vairables.netSend.sendString((byte) 5,"This is a test","255.255.255.255",5555);
         new Thread(Vairables.startWindow).start();
 
     }

@@ -155,6 +155,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
                         String temp_message = messageInput.getText();
 
                         String encoded_message = Vairables.crypt.code(temp_message,Vairables.encryptionPass);
+                        Vairables.netSend.sendString((byte) 5,encoded_message,"255.255.255.255",5555);
                         String decoded_message = Vairables.crypt.decode(encoded_message,Vairables.encryptionPass);
 
                         try {
