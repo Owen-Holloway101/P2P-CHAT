@@ -156,13 +156,13 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
                         String encoded_message = Vairables.crypt.code(temp_message,Vairables.encryptionPass);
                         String decoded_message = Vairables.crypt.decode(encoded_message,Vairables.encryptionPass);
-                        /*
+
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"Encoded: " + encoded_message + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
-                        */
+
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + decoded_message + '\n',null);
                         } catch (BadLocationException e1) {
