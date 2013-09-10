@@ -52,6 +52,7 @@ public class StartWindow implements Runnable, ActionListener {
 
         startChatting = new JButton("start chatting");
         startChatting.addActionListener(this);
+
         c.add(startChatting);
 
         uName = new JTextArea();

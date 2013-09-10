@@ -1,75 +1,70 @@
 //Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
+import java.io.UnsupportedEncodingException;
+
 public class Crypt {
 
-    public String code(String message, String pass) {
+    public String encode(String message, String pass) {
 
-        char passChar[] = new char[message.length() + 1];
-        char codedChar[] = new char[message.length() + 1];
+        System.out.println("encode");
 
-        int passcharPos = 0;
+        byte[] messageByte = new byte[0];
+        try {
+            messageByte = message.getBytes("UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        byte[] passByte = pass.getBytes();
 
+        byte[] outputByte = new byte[message.length()];
 
-        for (int i = 0; i < message.length(); i++) {
+        for (int i = 0; i < messageByte.length - 1; i++) {
 
-            passChar[i] = pass.charAt(passcharPos);
+            outputByte[i] = (byte)((messageByte[i] - passByte[i%(passByte.length-1)])%127);
 
-            if (passcharPos == pass.length() - 1) {
-                passcharPos = 0;
-            } else {
-                passcharPos++;
-            }
         }
 
-        for (int i = 0; i < message.length(); i++) {
-            //Encode char
-            codedChar[i] = (char)((127%((message.charAt(i)) - passChar[i])));
+        printBytes(outputByte,"outputByte:encode");
+
+        String output = new String(outputByte);
+
+        return output;
+    }
+
+    public String decode(String data, String pass) {
+
+        System.out.println("decode");
+
+        byte[] passByte = pass.getBytes();
+
+        byte[] dataByte = data.getBytes();
+
+        byte[] outputByte = new byte[dataByte.length];
+
+        for (int i = 0; i < dataByte.length - 1; i++) {
+
+            outputByte[i] = (byte)((dataByte[i] + passByte[i%(passByte.length-1)])%127);
+
         }
 
-        String output = "";
+        printBytes(outputByte,"outputByte:decode");
 
-        for (int i =0; i < message.length(); i++) {
-
-            output = output + codedChar[i];
-
+        String output = null;
+        try {
+            output = new String(outputByte,"UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
 
         return output;
     }
 
-    public String decode(String message, String pass) {
-
-        char passChar[] = new char[message.length()];
-        char codedChar[] = new char[message.length()];
-
-        int passcharPos = 0;
-
-        for (int i = 0; i < message.length(); i++) {
-
-            passChar[i] = pass.charAt(passcharPos);
-
-            if (passcharPos == pass.length() - 1) {
-                passcharPos = 0;
-            } else {
-                passcharPos++;
-            }
+    public static void printBytes(byte[] array, String name) {
+        for (int k = 0; k < array.length; k++) {
+            System.out.println(name + "[" + k + "] = " + "0x" +
+                    UnicodeFormatter.byteToHex(array[k]));
         }
-
-        for (int i = 0; i < message.length(); i++) {
-            //decode char
-            codedChar[i] = (char)(127%((message.charAt(i)) + passChar[i]));
-        }
-
-        String output = "";
-
-        for (int i =0; i < message.length(); i++) {
-
-            output = output + codedChar[i];
-
-        }
-
-        return output;
     }
 
 }

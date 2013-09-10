@@ -40,18 +40,17 @@ public class NetListen implements Runnable {
 
                 // Print the packet
                 System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
-                /*
-                if (Vairables.encryptionToggled) {
-                    System.out.println(Vairables.crypt.decode(new String(packet.getData()).trim(),Vairables.encryptionPass));
-                }
-                */
 
-                if (packetData[0] == 5) {
+                byte[] data = new byte[packetData.length - 1];
+
+                System.arraycopy(packetData,1,data,0,packetData.length - 1);
+
 
                     String temp_message = new String(packet.getData()).trim();
 
                     if (Vairables.encryptionToggled) {
                         temp_message = Vairables.crypt.decode(temp_message,Vairables.encryptionPass);
+                        System.out.println("Temp_Message_decrypt:" + temp_message);
                     }
 
                     try {
@@ -59,8 +58,6 @@ public class NetListen implements Runnable {
                     } catch (BadLocationException e) {
                         e.printStackTrace();
                     }
-
-                }
 
             }
     }

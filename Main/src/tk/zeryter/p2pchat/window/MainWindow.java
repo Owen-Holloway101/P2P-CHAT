@@ -154,25 +154,18 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
                         String temp_message = messageInput.getText();
 
-                        String encoded_message = Vairables.crypt.code(temp_message,Vairables.encryptionPass);
-                        Vairables.netSend.sendString((byte) 5,encoded_message,"255.255.255.255",5555);
-                        String decoded_message = Vairables.crypt.decode(encoded_message,Vairables.encryptionPass);
+                        String encodedString = Vairables.crypt.encode(temp_message, Vairables.encryptionPass);
 
-                        /*
+                        Vairables.netSend.sendString((byte) 5,encodedString,"255.255.255.255",5555);
+
                         try {
-                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"Encoded: " + encoded_message + '\n',null);
+                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
-                        */
 
-                        /*
-                        try {
-                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + decoded_message + '\n',null);
-                        } catch (BadLocationException e1) {
-                            e1.printStackTrace();
-                        }
-                        */
+                        System.out.println("String: " + encodedString);
+
 
                     } else {
                         try {
