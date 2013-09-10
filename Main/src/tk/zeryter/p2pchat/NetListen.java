@@ -49,7 +49,7 @@ public class NetListen implements Runnable {
                     String temp_message = new String(packet.getData()).trim();
 
                     if (Vairables.encryptionToggled) {
-                        temp_message = Vairables.crypt.decode(temp_message,Vairables.encryptionPass);
+                        temp_message = Vairables.crypt.decode(packetData,Vairables.encryptionPass);
                         System.out.println("Temp_Message_decrypt:" + temp_message);
                     }
 

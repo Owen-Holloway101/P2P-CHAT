@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 
 public class Crypt {
 
-    public String encode(String message, String pass) {
+    public byte[] encode(String message, String pass) {
 
         System.out.println("encode");
 
@@ -21,30 +21,26 @@ public class Crypt {
 
         for (int i = 0; i < messageByte.length - 1; i++) {
 
-            outputByte[i] = (byte)((messageByte[i] - passByte[i%(passByte.length-1)])%127);
+            outputByte[i] = (byte)((messageByte[i]/* - passByte[i%(passByte.length-1)]*/));
 
         }
 
         printBytes(outputByte,"outputByte:encode");
 
-        String output = new String(outputByte);
-
-        return output;
+        return outputByte;
     }
 
-    public String decode(String data, String pass) {
+    public String decode(byte[] data, String pass) {
 
         System.out.println("decode");
 
         byte[] passByte = pass.getBytes();
 
-        byte[] dataByte = data.getBytes();
+        byte[] outputByte = new byte[data.length];
 
-        byte[] outputByte = new byte[dataByte.length];
+        for (int i = 0; i < data.length - 1; i++) {
 
-        for (int i = 0; i < dataByte.length - 1; i++) {
-
-            outputByte[i] = (byte)((dataByte[i] + passByte[i%(passByte.length-1)])%127);
+            outputByte[i] = (byte)((data[i]/* + passByte[i%(passByte.length-1)]*/));
 
         }
 

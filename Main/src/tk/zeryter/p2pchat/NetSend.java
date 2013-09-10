@@ -7,10 +7,8 @@ import java.net.InetAddress;
 
 public class NetSend {
 
-    public void sendString(byte mode,String message, String host, int port) {
+    public void sendString(byte mode,byte[] data, String host, int port) {
         try {
-
-            byte[] data = message.getBytes();
 
             System.out.println();
 

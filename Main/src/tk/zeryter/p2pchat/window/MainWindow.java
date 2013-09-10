@@ -154,9 +154,9 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
                         String temp_message = messageInput.getText();
 
-                        String encodedString = Vairables.crypt.encode(temp_message, Vairables.encryptionPass);
+                        byte[] encodedByte = Vairables.crypt.encode(temp_message, Vairables.encryptionPass);
 
-                        Vairables.netSend.sendString((byte) 5,encodedString,"255.255.255.255",5555);
+                        Vairables.netSend.sendString((byte) 5,encodedByte,"255.255.255.255",5555);
 
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
@@ -164,7 +164,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
                             e1.printStackTrace();
                         }
 
-                        System.out.println("String: " + encodedString);
+                        System.out.println("String: " + encodedByte);
 
 
                     } else {
