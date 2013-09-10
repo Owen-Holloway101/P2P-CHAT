@@ -110,7 +110,10 @@ public class StartWindow implements Runnable, ActionListener {
                 System.out.println("Set username: " + Vairables.userName);
                 frame.dispose();
                 new Thread(Vairables.mainWindow).start();
+                new Thread(Vairables.listen).start();
             }
+
+
         }
 
     }

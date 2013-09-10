@@ -23,7 +23,8 @@ public class Crypt {
         }
 
         for (int i = 0; i < message.length(); i++) {
-            codedChar[i] = (char)((byte)((((message.charAt(i)) - passChar[i]) - pass.charAt(pass.length() - 1)*(message.length()-i))-pass.charAt(0)*i));
+            //Encode char
+            codedChar[i] = (char)((127%((message.charAt(i)) - passChar[i])));
         }
 
         String output = "";
@@ -56,7 +57,8 @@ public class Crypt {
         }
 
         for (int i = 0; i < message.length(); i++) {
-            codedChar[i] = (char)((byte)((((message.charAt(i)) + pass.charAt(0)*i ) + (pass.charAt(pass.length() - 1)*(message.length()-i))) + passChar[i]));
+            //decode char
+            codedChar[i] = (char)(127%((message.charAt(i)) + passChar[i]));
         }
 
         String output = "";

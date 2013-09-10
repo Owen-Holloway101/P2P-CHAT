@@ -60,7 +60,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
     JScrollPane messagesScroll;
 
-    JTextPane messages;
+    public JTextPane messages;
 
     JTextField messageInput;
 
@@ -129,7 +129,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
         menuBar.setBounds(0,0, rootContainer.getWidth(),20);
 
-        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-16,rootContainer.getHeight()-30);
+        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-2,rootContainer.getHeight()-20);
 
         //Wiget Resizing
 
@@ -158,17 +158,21 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
                         Vairables.netSend.sendString((byte) 5,encoded_message,"255.255.255.255",5555);
                         String decoded_message = Vairables.crypt.decode(encoded_message,Vairables.encryptionPass);
 
+                        /*
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"Encoded: " + encoded_message + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
+                        */
 
+                        /*
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + decoded_message + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
+                        */
 
                     } else {
                         try {
@@ -216,6 +220,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 class MainWindowMonitor extends WindowAdapter implements WindowListener {
 
     public void windowClosing(WindowEvent e) {
+        Vairables.running = false;
         System.exit(0);
     }
 }

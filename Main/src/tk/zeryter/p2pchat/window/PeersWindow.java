@@ -54,37 +54,10 @@ public class PeersWindow implements Runnable, ActionListener {
 
     //GUI widgets
 
-    JButton toggleEncryption;
-    JTextArea pass;
 
     void gui_init(Container c) {
 
         c.setLayout(null);
-
-        if (Vairables.encryptionToggled) {
-            toggleEncryption = new JButton("Encryption is on");
-            toggleEncryption.setBackground(Color.green);
-        } else {
-            toggleEncryption = new JButton("Encryption is off");
-            toggleEncryption.setBackground(Color.red);
-        }
-
-        toggleEncryption.addActionListener(this);
-        c.add(toggleEncryption);
-
-        if (Vairables.encryptionToggled) {
-            pass = new JTextArea();
-            pass.setBackground(Color.green);
-            pass.setEditable(false);
-            //pass.setText(Vairables.encryptionPass);
-        } else {
-            pass = new JTextArea();
-            pass.setBackground(Color.red);
-            pass.setEditable(true);
-            //pass.setText(Vairables.encryptionPass);
-        }
-
-        c.add(pass);
 
     }
 
@@ -96,36 +69,10 @@ public class PeersWindow implements Runnable, ActionListener {
     void gui_draw(Container c) {
 
         c.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-        toggleEncryption.setBounds(0,20,c.getWidth(),c.getHeight() - 50);
-        pass.setBounds(0,0,c.getWidth(),20);
     }
 
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == toggleEncryption) {
-
-            Vairables.encryptionToggled = !Vairables.encryptionToggled;
-            Vairables.encryptionPass = pass.getText();
-
-            if (Vairables.encryptionToggled) {
-                toggleEncryption.setText("Encryption is on");
-                toggleEncryption.setBackground(Color.green);
-            } else {
-                toggleEncryption.setText("Encryption is off");
-                toggleEncryption.setBackground(Color.red);
-            }
-
-            if (Vairables.encryptionToggled) {
-                pass.setBackground(Color.green);
-                pass.setEditable(false);
-                pass.setText(Vairables.encryptionPass);
-            } else {
-                pass.setBackground(Color.red);
-                pass.setEditable(true);
-                pass.setText(Vairables.encryptionPass);
-            }
-
-        }
     }
 }
 

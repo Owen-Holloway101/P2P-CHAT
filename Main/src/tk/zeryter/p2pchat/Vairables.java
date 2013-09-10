@@ -9,6 +9,7 @@ public class Vairables {
     public static int port = 5555;
     public static boolean encryptionToggled = false;
     public static String encryptionPass = "";
+    public static boolean running = true;
 
     //Windows
     public static StartWindow startWindow = new StartWindow();
