@@ -158,21 +158,29 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
                         Vairables.netSend.sendString((byte) 5,encodedByte,"255.255.255.255",5555);
 
+                        /*
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
-
+                        */
                         System.out.println("String: " + encodedByte);
 
 
                     } else {
+
+                        /*
                         try {
                             messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
                         } catch (BadLocationException e1) {
                             e1.printStackTrace();
                         }
+                        */
+
+                        byte[] sendByte = Vairables.crypt.utftobyte(messageInput.getText());
+
+                        Vairables.netSend.sendString((byte) 5,sendByte,"255.255.255.255",5555);
 
                     }
                 }

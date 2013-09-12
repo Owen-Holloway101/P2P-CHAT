@@ -51,6 +51,9 @@ public class NetListen implements Runnable {
                     if (Vairables.encryptionToggled) {
                         temp_message = Vairables.crypt.decode(packetData,Vairables.encryptionPass);
                         System.out.println("Temp_Message_decrypt:" + temp_message);
+                    } else {
+                        temp_message = Vairables.crypt.utftostring(packetData);
+                        System.out.println("Temp_Message_decrypt:" + temp_message);
                     }
 
                     try {
