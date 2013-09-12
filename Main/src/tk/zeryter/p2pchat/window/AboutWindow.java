@@ -71,7 +71,7 @@ public class AboutWindow implements Runnable, ActionListener {
 
     void gui_draw(Container c) {
 
-        c.setBounds(0,0,frame.getWidth(),frame.getHeight());
+        c.setBounds(0,0,frame.getContentPane().getWidth(),frame.getContentPane().getHeight());
         canvas.setBounds(0,0,c.getWidth(),c.getHeight());
 
     }

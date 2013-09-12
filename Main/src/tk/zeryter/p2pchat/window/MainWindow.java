@@ -125,19 +125,19 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
     void gui_draw() {
 
         //Main GUI element resizing (Containers, Menus, etc ....)
-        rootContainer.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+        rootContainer.setBounds(0, 0, frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
 
         menuBar.setBounds(0,0, rootContainer.getWidth(),20);
 
-        widgetsContainer.setBounds(0,20,rootContainer.getWidth()-2,rootContainer.getHeight()-20);
+        widgetsContainer.setBounds(0,20,rootContainer.getWidth(),rootContainer.getHeight());
 
         //Wiget Resizing
 
-        messagesScroll.setBounds(0,0,widgetsContainer.getWidth(),widgetsContainer.getHeight() - 60);
+        messagesScroll.setBounds(0,0,widgetsContainer.getWidth(),widgetsContainer.getHeight() - 50);
         messages.setBounds(0,0,messagesScroll.getWidth(),messagesScroll.getHeight());
 
-        messageInput.setBounds(0,widgetsContainer.getHeight() - 60,widgetsContainer.getWidth() - 80,30);
-        messageSend.setBounds(widgetsContainer.getWidth() - 80,widgetsContainer.getHeight() - 60,80,30);
+        messageInput.setBounds(0,widgetsContainer.getHeight() - 50,widgetsContainer.getWidth() - 80,30);
+        messageSend.setBounds(widgetsContainer.getWidth() - 80,widgetsContainer.getHeight() - 50,80,30);
 
         messageInput.requestFocus();
     }

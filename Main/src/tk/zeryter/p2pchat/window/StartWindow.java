@@ -85,7 +85,7 @@ public class StartWindow implements Runnable, ActionListener {
 
     void gui_draw(Container c) {
 
-        c.setBounds(0,0,frame.getWidth(),frame.getHeight());
+        c.setBounds(0,0,frame.getContentPane().getWidth(),frame.getContentPane().getHeight());
 
         startChatting.setBounds(280,80,150,30);
 
