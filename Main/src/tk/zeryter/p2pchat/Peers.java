@@ -1,6 +1,5 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
-
-import java.util.ArrayList;
 
 public class Peers {
 

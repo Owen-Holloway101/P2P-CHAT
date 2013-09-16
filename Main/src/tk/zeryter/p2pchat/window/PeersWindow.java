@@ -1,3 +1,4 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat.window;
 
 import tk.zeryter.p2pchat.P2PChatMain;

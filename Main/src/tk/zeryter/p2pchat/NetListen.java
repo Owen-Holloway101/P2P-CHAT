@@ -1,3 +1,4 @@
+//Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
 import javax.swing.text.BadLocationException;
