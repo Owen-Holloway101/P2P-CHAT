@@ -1,0 +1,8 @@
+========================================================================================================================
+
+This method listens for data packets sent to a port
+
+In earlier versions (see github project) the listen method had a switch for the first byte of an array to check what
+to do with the data. However it was later scrapped due to time constraints and the fact it was not useful.
+
+========================================================================================================================

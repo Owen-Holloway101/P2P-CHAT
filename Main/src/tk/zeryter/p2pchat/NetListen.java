@@ -32,6 +32,12 @@ public class NetListen implements Runnable {
                 // Create a packet
                 DatagramPacket packet = new DatagramPacket(new byte[PACKETSIZE], PACKETSIZE);
 
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+
                 // Receive a packet (blocking)
                 try {
                     socket.receive(packet);
