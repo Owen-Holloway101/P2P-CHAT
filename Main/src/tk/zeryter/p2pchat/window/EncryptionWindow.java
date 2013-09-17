@@ -98,7 +98,7 @@ public class EncryptionWindow implements Runnable, ActionListener {
     void gui_draw(Container c) {
 
         c.setBounds(0, 0, frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
-        toggleEncryption.setBounds(0,20,c.getWidth() - 4,c.getHeight() - 50);
+        toggleEncryption.setBounds(0,20,c.getWidth(),c.getHeight() - 20);
         pass.setBounds(0,0,c.getWidth(),20);
     }
 

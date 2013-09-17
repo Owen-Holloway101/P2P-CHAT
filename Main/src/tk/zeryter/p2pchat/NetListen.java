@@ -11,6 +11,8 @@ public class NetListen implements Runnable {
 
     public void run() {
 
+        listenString(5555,1000);
+
     }
 
     public void listenString(int port, int PACKETSIZE) {

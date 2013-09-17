@@ -27,7 +27,8 @@ public class P2PChatMain {
         }
 
         new Thread(Vairables.startWindow).start();
-
+        //new Thread(Vairables.mainWindow).start();
+        //new Thread(Vairables.listen).start();
     }
 
 }

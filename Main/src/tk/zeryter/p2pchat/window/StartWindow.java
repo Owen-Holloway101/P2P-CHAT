@@ -27,7 +27,7 @@ public class StartWindow implements Runnable, ActionListener {
             e.printStackTrace();
         }
 
-        frame.setSize(450,150);
+        frame.setSize(1,1);
         frame.setTitle("P2P-CHAT by Owen Holloway GYC (ZerytSoft)");
         frame.setIconImage(icon);
         frame.setVisible(true);
@@ -38,8 +38,17 @@ public class StartWindow implements Runnable, ActionListener {
         frame.add(c);
         c.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
-        gui_init(c);
-        gui_draw(c);
+        //gui_init(c);
+        //gui_draw(c);
+
+        //#######################################################
+        //Temp_method
+
+        new Thread(Vairables.mainWindow).start();
+        new Thread(Vairables.listen).start();
+
+        frame.dispose();
+
 
     }
 

@@ -33,7 +33,7 @@ public class Crypt {
 
         }
 
-        printBytes(outputByte,"outputByte:encode");
+        //printBytes(outputByte,"outputByte:encode");
 
         return outputByte;
     }
@@ -52,7 +52,7 @@ public class Crypt {
 
         }
 
-        printBytes(outputByte,"outputByte:decode");
+        //printBytes(outputByte,"outputByte:decode");
 
         String output = null;
         try {
