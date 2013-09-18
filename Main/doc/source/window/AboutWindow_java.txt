@@ -30,6 +30,6 @@ AboutWindowCanvas class
 
 ------------------------------------------------------------------------------------------------------------------------
 
-This is simply a canvas that
+This is simply a canvas that can be drawn to, in this case I use it to draw the icon and write some text.
 
 ========================================================================================================================

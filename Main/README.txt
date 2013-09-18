@@ -1,6 +1,15 @@
 ========================================================================================================================
 
+ _____               _   ____         __ _
+|__  /___ _ __ _   _| |_/ ___|  ___  / _| |_
+  / // _ \ '__| | | | __\___ \ / _ \| |_| __|
+ / /|  __/ |  | |_| | |_ ___) | (_) |  _| |_
+/____\___|_|   \__, |\__|____/ \___/|_|  \__|
+               |___/
+
 This is P2P-CHAT
+
+Release Version: RC2
 
 Owen Holloway GYC 2013
 [ZerytSoft]
@@ -8,9 +17,6 @@ Owen Holloway GYC 2013
 - source can be found in the src directory
 - documentation for source can be found in doc/source which uses the same directory structure as source
 - algorithms can be found in the algo directory
+- README is broken up into parts for each section.
 
-INSTALL and RUN
-
-- make when in the src directory with the command javac tk/zeryter/p2pchat/*.java/*.java
-- zip the folders assets, tk and META-INF and rename .zip to .jar
-- double click to run or open with java -jar jarname.jar
+========================================================================================================================
