@@ -16,8 +16,8 @@ init:
     create container for wigets and add to frame
 
     create widgets and add to container
-
-    run draw
+    
+    run draw 
 
 /init
 
@@ -33,33 +33,16 @@ draw:
 
 actionEvent:
 
-    if menubarQuit
-        end application
-
-    if menubarEncryption
-        open encryption window
-
-    if menubarAbout
-        open about window
-
-    if send
-        get message input text
-
-        if encryptionEnabled
-            convert and encrypt to UTF8 bytes
-        else
-            convert text to UFT8 bytes
-
-        send bytes to 255.255.255.255 on port 5555
+    if encryption
 
 /actionEvent
 
 windowResized:
-
+    
     run draw method
 
 /windowResized
-
+    
 /main class methods
 
 windowMonitor methods
