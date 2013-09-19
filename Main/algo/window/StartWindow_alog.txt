@@ -16,8 +16,8 @@ init:
     create container for wigets and add to frame
 
     create widgets and add to container
-    
-    run draw 
+
+    run draw
 
 /init
 
@@ -33,21 +33,26 @@ draw:
 
 actionEvent:
 
-    if encryptionToggled is source:
-        if encryptionEnabled:
-            set encryptionEnabled false
+    if start application is source:
+
+        if username is input and port selected true:
+            start MainWindow
+            close AboutWindow
+        else if username is input:
+            prompt for port
+        else if port is selected:
+            prompt for username
         else:
-            set encryptionEnabled true
-            set password input text as password
+            prompt for username and port
 
 /actionEvent
 
 windowResized:
-    
+
     run draw method
 
 /windowResized
-    
+
 /main class methods
 
 windowMonitor methods
