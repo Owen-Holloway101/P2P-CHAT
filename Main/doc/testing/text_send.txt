@@ -22,20 +22,20 @@ Test passed: TRUE
 
                              Receive from other chat application sending to itself (no encryption)
                     Message input (sender)              #                        Message output
-                                                        #
-                                                        #
-                                                        #
-                                                        #
+"test1"                                                 # /192.168.1.4: test1                                  # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
+                                                        #                                                      #
 
-Test passed:
+Test passed: TRUE
 
-                             Receive from other chat application sending to itself (with encryption [pass: password123])
+                       Receive from other chat application sending to itself (with encryption [pass: password123])
                     Message input (sender)              #                        Message output
-                                                        #
-                                                        #
-                                                        #
-                                                        #
+"test1"                                                 # /192.168.1.4: test1                                  # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
+                                                        #                                                      #
 
-Test passed:
+Test passed: TRUE
 
 ========================================================================================================================
