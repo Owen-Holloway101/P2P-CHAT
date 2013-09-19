@@ -1,0 +1,37 @@
+========================================================================================================================
+                                    Client: Apple Macintosh OS 10.7
+
+MainWindow: PASS
+MenuBar: PASS
+    File: PASS
+    Edit: PASS
+    Help: PASS
+MessageOutput: PASS
+MessageInput: PASS
+SendButton: PASS
+------------------------------------------------------------------------------------------------------------------------
+                                    Client: Ubuntu linux 13.04
+
+MainWindow: PASS
+MenuBar: PASS
+    File: PASS
+    Edit: PASS
+    Help: PASS
+MessageOutput: PASS
+MessageInput: PASS
+SendButton: PASS
+------------------------------------------------------------------------------------------------------------------------
+                                    Client: Microsoft Windows 7
+
+MainWindow: PASS
+MenuBar: PASS
+    File: PASS
+    Edit: PASS
+    Help: PASS
+MessageOutput: PASS
+MessageInput: PASS
+SendButton: PASS
+========================================================================================================================
+A PASS constitutes and element that is formatted correctly, can be clicked and responds to events.
+See images in folder for formatting.
+========================================================================================================================
