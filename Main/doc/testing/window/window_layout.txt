@@ -32,6 +32,6 @@ MessageOutput: PASS
 MessageInput: PASS
 SendButton: PASS
 ========================================================================================================================
-A PASS constitutes and element that is formatted correctly, can be clicked and responds to events.
+A PASS constitutes an element that is formatted correctly, can be clicked and responds to events.
 See images in folder for formatting.
 ========================================================================================================================

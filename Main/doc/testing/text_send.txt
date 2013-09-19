@@ -17,25 +17,30 @@ Test passed: TRUE
 "abcdefghijklmnopqrstuvwxyz"                            # /10.76.151.123: abcdefghijklmnopqrstuvwxyz           # PASS
 "zyxwvutsrqponmlkjihgfedcba"                            # /10.76.151.123: zyxwvutsrqponmlkjihgfedcba           # PASS
                                                         #                                                      #
-
 Test passed: TRUE
 
-                             Receive from other chat application sending to itself (no encryption)
+                                  Receive from remote chat application (no encryption)
                     Message input (sender)              #                        Message output
 "test1"                                                 # /192.168.1.4: test1                                  # PASS
 "abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
 "zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
                                                         #                                                      #
-
 Test passed: TRUE
 
-                       Receive from other chat application sending to itself (with encryption [pass: password123])
+                                  Receive from remote chat application (with encryption [pass: password123])
                     Message input (sender)              #                        Message output
 "test1"                                                 # /192.168.1.4: test1                                  # PASS
 "abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
 "zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
                                                         #                                                      #
+Test passed: TRUE
 
+                         Receive from remote chat application with no pass on local (with encryption [pass: password123])
+                    Message input (sender)              #                        Message output
+"test1"                                                 # /192.168.1.4: [encrypted text]                       # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: [encrypted text]                       # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: [encrypted text]                       # PASS
+                                                        #                                                      #
 Test passed: TRUE
 
 ========================================================================================================================
