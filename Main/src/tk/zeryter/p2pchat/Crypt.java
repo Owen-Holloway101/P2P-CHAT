@@ -8,8 +8,6 @@ public class Crypt {
 
     public byte[] encode(String message, String pass) {
 
-        System.out.println("encode");
-
         String encodedMessage = "";
 
         char encocodedChar[] = new char[message.length()];
@@ -26,7 +24,7 @@ public class Crypt {
                 passchar = 0;
             }
 
-            encocodedChar[i] = (char)((message.charAt(i)*pass.charAt(passchar))%pass.length());
+            encocodedChar[i] = (char)(((message.charAt(i)*pass.charAt(passchar)))+message.length());
 
             encodedMessage = encodedMessage + encocodedChar[i];
 
@@ -61,7 +59,7 @@ public class Crypt {
                 passchar = 0;
             }
 
-            decodedChar[i] = (char)((output.charAt(i)%pass.length())/pass.charAt(passchar));
+            decodedChar[i] = (char)((output.charAt(i)-output.length())/pass.charAt(passchar));
 
             decodedMessage = decodedMessage + decodedChar[i];
 

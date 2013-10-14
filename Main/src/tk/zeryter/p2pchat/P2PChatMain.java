@@ -1,8 +1,6 @@
 //Owen Holloway GYC
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.window.StartWindow;
-
 import javax.swing.*;
 
 public class P2PChatMain {

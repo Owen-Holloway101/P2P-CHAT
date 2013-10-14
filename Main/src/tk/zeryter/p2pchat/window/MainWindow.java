@@ -6,7 +6,6 @@ import tk.zeryter.p2pchat.Vairables;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -53,6 +52,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
     JMenuItem quit;
     //edit menu items
     JMenuItem encryption;
+    JMenuItem chatStream;
     //Help menu items
     JMenuItem about;
 
@@ -88,9 +88,12 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         //edit Menu items
         encryption = new JMenuItem("Encryption");
         encryption.addActionListener(this);
+        chatStream = new JMenuItem("Chat Stream");
+        chatStream.addActionListener(this);
 
         //Add to edit
         edit.add(encryption);
+        edit.add(chatStream);
 
         menuBar.add(help);
 
@@ -158,25 +161,8 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
                         Vairables.netSend.sendString((byte) 5,encodedByte,"255.255.255.255",5555);
 
-                        /*
-                        try {
-                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
-                        } catch (BadLocationException e1) {
-                            e1.printStackTrace();
-                        }
-                        */
-                        System.out.println("String: " + encodedByte);
-
 
                     } else {
-
-                        /*
-                        try {
-                            messages.getStyledDocument().insertString(messages.getStyledDocument().getLength(),"You: " + messageInput.getText() + '\n',null);
-                        } catch (BadLocationException e1) {
-                            e1.printStackTrace();
-                        }
-                        */
 
                         byte[] sendByte = Vairables.crypt.utftobyte(messageInput.getText());
 
@@ -195,6 +181,10 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
 
         if (e.getSource() == encryption) {
             new Thread(Vairables.encryptionWindow).start();
+        }
+
+        if (e.getSource() == chatStream) {
+            //TODO add chatsteam window start thread
         }
 
         if (e.getSource() == about) {
