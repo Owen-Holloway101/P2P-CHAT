@@ -10,28 +10,29 @@ public class Crypt {
 
         System.out.println("encode");
 
-        byte[] temp_messageByte = new byte[0];
+        String encodedMessage = "";
 
-        try {
-            temp_messageByte = message.getBytes("UTF8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        char encocodedChar[] = new char[message.length()];
+
+        int passchar = 0;
+
+        for (int i = 0; i < message.length(); i++) {
+
+            if (passchar < pass.length() - 1) {
+
+                passchar++;
+
+            } else {
+                passchar = 0;
+            }
+
+            encocodedChar[i] = (char)((message.charAt(i)*pass.charAt(passchar))%pass.length());
+
+            encodedMessage = encodedMessage + encocodedChar[i];
+
         }
 
-        byte[] messageByte = new byte[1000];
-        Arrays.fill(messageByte,(byte)0);
-
-        System.arraycopy(temp_messageByte,0,messageByte,0,temp_messageByte.length);
-
-        byte[] passByte = pass.getBytes();
-
-        byte[] outputByte = new byte[1000];
-
-        for (int i = 0; i < messageByte.length; i++) {
-
-            outputByte[i] = (byte)(messageByte[i] - passByte[i%(passByte.length-1)]);
-
-        }
+        byte[] outputByte = utftobyte(encodedMessage);
 
         //printBytes(outputByte,"outputByte:encode");
 
@@ -40,30 +41,33 @@ public class Crypt {
 
     public String decode(byte[] data, String pass) {
 
-        System.out.println("decode");
-
-        byte[] passByte = pass.getBytes();
-
-        byte[] outputByte = new byte[data.length];
-
-        for (int i = 0; i < data.length; i++) {
-
-            outputByte[i] = (byte)(data[i] + passByte[i%(passByte.length-1)]);
-
-        }
-
-        //printBytes(outputByte,"outputByte:decode");
-
-        String output = null;
-        try {
-            output = new String(outputByte,"UTF8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        String output = utftostring(data);
 
         output = output.trim();
 
-        return output;
+        String decodedMessage = "";
+
+        char decodedChar[] = new char[output.length()];
+
+        int passchar = 0;
+
+        for (int i =0; i < output.length(); i++) {
+
+            if (passchar < pass.length() - 1) {
+
+                passchar++;
+
+            } else {
+                passchar = 0;
+            }
+
+            decodedChar[i] = (char)((output.charAt(i)%pass.length())/pass.charAt(passchar));
+
+            decodedMessage = decodedMessage + decodedChar[i];
+
+        }
+
+        return decodedMessage;
     }
 
     public byte[] utftobyte(String data) {

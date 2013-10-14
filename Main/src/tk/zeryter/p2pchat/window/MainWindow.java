@@ -35,7 +35,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         frame.setTitle("P2P-CHAT");
         frame.setIconImage(icon);
         frame.addWindowListener(new MainWindowMonitor());
-        rootContainer.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+        rootContainer.setBounds(0, 0, frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
         frame.add(rootContainer);
         widgetsContainer.setBounds(0,20,rootContainer.getWidth(),rootContainer.getHeight()-201);
         rootContainer.add(widgetsContainer);
