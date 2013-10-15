@@ -184,7 +184,7 @@ public class MainWindow implements Runnable, ComponentListener, ActionListener {
         }
 
         if (e.getSource() == chatStream) {
-            //TODO add chatsteam window start thread
+            new Thread(Vairables.streamWindow).start();
         }
 
         if (e.getSource() == about) {

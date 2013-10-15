@@ -16,8 +16,8 @@ public class Vairables {
     public static StartWindow startWindow = new StartWindow();
     public static MainWindow mainWindow = new MainWindow();
     public static AboutWindow aboutWindow = new AboutWindow();
+    public static StreamWindow streamWindow = new StreamWindow();
     public static EncryptionWindow encryptionWindow = new EncryptionWindow();
-    public static PeersWindow peersWindow = new PeersWindow();
 
     //other class instances
     public static NetSend netSend = new NetSend();
