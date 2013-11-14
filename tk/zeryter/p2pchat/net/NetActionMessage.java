@@ -14,5 +14,7 @@ public class NetActionMessage extends NetAction {
 
     public void packetRecieved(DatagramPacket packet) {
 
+        System.out.print("NetActionMessage \n");
+
     }
 }

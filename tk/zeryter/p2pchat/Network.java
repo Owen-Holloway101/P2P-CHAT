@@ -6,6 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Owen Holloway
@@ -16,6 +18,8 @@ import java.util.Arrays;
 //TODO comment out entire file properly
 
 public class Network implements Runnable {
+
+    //Inner class for sending packets
 
     public static class send {
 
@@ -40,16 +44,26 @@ public class Network implements Runnable {
         }
     }
 
-    public static void startListening(int port, int PACKETSIZE) {
+    //External calls to class instances
 
-        Network network = new Network();
+    private static Map<Integer, Network> networkMap = new HashMap<Integer, Network>();
 
-        network.port = port;
-        network.PACKETSIZE = PACKETSIZE;
+    public static void startListening(Integer port, int PACKETSIZE) {
 
-        new Thread(network).start();
+        networkMap.put(port,new Network());
+        networkMap.get(port).port = port;
+        networkMap.get(port).PACKETSIZE = PACKETSIZE;
+
+        new Thread(networkMap.get(port)).start();
 
     }
+
+
+    public static void setNetAction(int port,NetAction newNetAction) {
+        networkMap.get(port).netAction = newNetAction;
+    }
+
+    //Main body of class instance
 
     public int port;
     public int PACKETSIZE;
@@ -104,9 +118,4 @@ public class Network implements Runnable {
         netAction.packetRecieved(packet);
 
     }
-
-    public void setNetAction(NetAction newNetAction) {
-        netAction = newNetAction;
-    }
-
 }
