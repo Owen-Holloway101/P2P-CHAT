@@ -8,8 +8,13 @@ package tk.zeryter.p2pchat;
 
 public class P2PChatMain {
 
+    public static boolean running = true;
+
     public static void main(String args[]) {
 
-    }
+        Network.startListening(10);
+        Network.startListening(20);
+        Network.startListening(30);
 
+    }
 }
