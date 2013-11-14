@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.Arrays;
 
 /**
  * Owen Holloway
@@ -12,6 +13,7 @@ import java.net.SocketException;
  * Date: 13/11/13
  */
 
+//TODO comment out entire file properly
 
 public class Network implements Runnable {
 
@@ -95,7 +97,9 @@ public class Network implements Runnable {
             e.printStackTrace();
         }
 
-        System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + new String(packet.getData()).trim());
+        byte[] data = packet.getData();
+
+        System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + data.length + ":" + Arrays.toString(data));
 
         netAction.packetRecieved(packet);
 
@@ -103,14 +107,6 @@ public class Network implements Runnable {
 
     public void setNetAction(NetAction newNetAction) {
         netAction = newNetAction;
-    }
-
-    public class NetAction {
-
-        public void packetRecieved(DatagramPacket packet) {
-
-        }
-
     }
 
 }
