@@ -1,6 +1,9 @@
 package tk.zeryter.p2pchat;
 
-import tk.zeryter.p2pchat.net.NetActionMessage;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Owen Holloway
@@ -12,33 +15,17 @@ public class P2PChatMain {
 
     public static boolean running = true;
 
+    public static Path P2PDIR = Paths.get(System.getProperty("user.home") + "/.P2P-CHAT");
+
     public static void main(String args[]) {
 
-        Network.startListening(55555,1000);
-        Network.setNetAction(55555,new NetActionMessage());
-
-
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        byte[] b;
-        b = new byte[]{1, 2, 4, 5, 6, 7, 8, 8, 9, 0};
-
-        for (int i = 0; i < 100; i++) {
-
-            Network.send.bytearray((byte)1,b,"255.255.255.255",55555);
-
+        if (Files.notExists(P2PDIR)) {
             try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                Files.createDirectories(P2PDIR);
+                System.out.println("First time run dir creation");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
         }
-
-        System.exit(0);
     }
 }

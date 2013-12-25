@@ -5,7 +5,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,8 +30,13 @@ public class Network implements Runnable {
                 // Get the internet address of the specified host
                 InetAddress address = InetAddress.getByName(host);
 
+                byte[] packetData = new byte[data.length + 1];
+
+                packetData[0] = mode;
+                System.arraycopy(data,0,packetData,1,data.length);
+
                 // Initialize a datagram packet with data and address
-                DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
+                DatagramPacket packet = new DatagramPacket(packetData, data.length, address, port);
 
                 // Create a datagram socket, send the packet through it, close it.
                 DatagramSocket dsocket = new DatagramSocket();
@@ -110,10 +114,6 @@ public class Network implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        byte[] data = packet.getData();
-
-        System.out.println(packet.getAddress() + ":" + packet.getPort() + ":" + data.length + ":" + Arrays.toString(data));
 
         netAction.packetRecieved(packet);
 
