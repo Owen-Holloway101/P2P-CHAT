@@ -3,6 +3,7 @@ package tk.zeryter.p2pchat;
 import tk.zeryter.p2pchat.window.MainWindow;
 import tk.zeryter.p2pchat.window.Window;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,6 +21,7 @@ public class P2PChatMain {
     public static boolean running = true;
 
     //Global Variables
+    public static int PORT = 5555;
 
     //The main dir for P2P-CHAT, config files are stored here
     public static Path P2PDIR = Paths.get(System.getProperty("user.home") + "/.P2P-CHAT");
@@ -58,6 +60,12 @@ public class P2PChatMain {
                 GUI = false;
             }
 
+            if (args[i].length() >= 2) {
+                if (args[i].substring(0,2).equals("-p")) {
+                    PORT = Integer.parseInt(args[i + 1]);
+                }
+            }
+
         }
 
 
@@ -70,12 +78,19 @@ public class P2PChatMain {
         ConsoleInput consoleInput = new ConsoleInput();
         new Thread(consoleInput).start();
 
+        //Lets make the window look like the rest of the OS
+        try{
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
         //This is the main window
         if (GUI) {
             Window window = new MainWindow();
             new Thread(window).start();
-        } else {
-            System.out.println("NO GUI");
         }
 
         //System.exit(0);

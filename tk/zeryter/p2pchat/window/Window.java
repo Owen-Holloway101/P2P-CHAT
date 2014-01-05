@@ -18,7 +18,7 @@ import java.net.URL;
 public class Window implements Runnable, ComponentListener {
 
     JFrame frame = new JFrame();
-    Image icon;
+    public static Image icon;
 
 
     @Override
@@ -33,12 +33,12 @@ public class Window implements Runnable, ComponentListener {
         }
 
         //Set basic frame
-        frame.setSize(200, 300);
+        frame.setSize(200, 280);
         frame.setIconImage(icon);
         frame.setTitle("[null title]");
         frame.addComponentListener(this);
         frame.setVisible(true);
-        frame.addWindowListener(new WindowMonitor());
+        //frame.addWindowListener(new WindowMonitor());
 
         init();
 
@@ -76,13 +76,13 @@ public class Window implements Runnable, ComponentListener {
 
     }
 
-}
+    class WindowMonitor extends WindowAdapter implements WindowListener {
 
-class WindowMonitor extends WindowAdapter implements WindowListener {
-
-    public void windowClosing(WindowEvent e) {
-        P2PChatMain.running = false;
-        e.getWindow().setVisible(false);
-        System.exit(0);
+        public void windowClosing(WindowEvent e) {
+            P2PChatMain.running = false;
+            e.getWindow().setVisible(false);
+            System.exit(0);
+        }
     }
+
 }
