@@ -1,4 +1,7 @@
-package tk.zeryter.p2pchat;
+package tk.zeryter.p2pchat.net;
+
+import tk.zeryter.p2pchat.Crypt;
+import tk.zeryter.p2pchat.P2PChatMain;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -22,26 +25,18 @@ public class Network implements Runnable {
 
     public static class send {
 
-        public static void bytearray(byte mode, byte[] data, String host, int port) {
+        public static void bytearray(byte[] data,String host, int port) {
             try {
 
-                System.out.println();
-
-                // Get the internet address of the specified host
-                InetAddress address = InetAddress.getByName(host);
-
-                byte[] packetData = new byte[data.length + 1];
-
-                packetData[0] = mode;
-                System.arraycopy(data,0,packetData,1,data.length);
-
-                // Initialize a datagram packet with data and address
-                DatagramPacket packet = new DatagramPacket(packetData, data.length, address, port);
+                DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName(host), port);
 
                 // Create a datagram socket, send the packet through it, close it.
                 DatagramSocket dsocket = new DatagramSocket();
                 dsocket.send(packet);
                 dsocket.close();
+
+                System.out.println("Sent: " + packet.getAddress() + ":" + Crypt.utftostring(packet.getData()));
+
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -72,7 +67,7 @@ public class Network implements Runnable {
     public int port;
     public int PACKETSIZE;
 
-    NetAction netAction = new NetAction();
+    NetAction netAction;
 
     public void run() {
 
@@ -88,7 +83,7 @@ public class Network implements Runnable {
 
     private void init() {
 
-        String receivedData;
+        //Sets up the new listener for network.
         System.out.println("Starting up on port: " + port);
         try {
             socket = new DatagramSocket(port);
@@ -102,18 +97,25 @@ public class Network implements Runnable {
 
         DatagramPacket packet = new DatagramPacket(new byte[PACKETSIZE], PACKETSIZE);
 
+        //Sleeps for 20ms
+        /*
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
+        */
 
-        // Receive a packet (blocking)
+        // Receive a packet waits until a packet has been received
         try {
             socket.receive(packet);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        byte[] packetData = packet.getData();
+
+        //System.out.println("Received: " + packet.getAddress() + ":" + Crypt.utftostring(packetData));
 
         netAction.packetRecieved(packet);
 

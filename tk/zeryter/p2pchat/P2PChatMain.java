@@ -1,5 +1,7 @@
 package tk.zeryter.p2pchat;
 
+import tk.zeryter.p2pchat.window.Window;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,11 +15,25 @@ import java.nio.file.Paths;
 
 public class P2PChatMain {
 
+    //is everything running? this is the global variable
     public static boolean running = true;
 
+    //The main dir for P2P-CHAT, config files are stored here
     public static Path P2PDIR = Paths.get(System.getProperty("user.home") + "/.P2P-CHAT");
 
+    //Static classes
+    public static Message message = new Message();
+
     public static void main(String args[]) {
+        System.out.println("Owen Holloway, ZerytSoft, 2013");
+        System.out.println(" _____               _   ____         __ _   \n" +
+                "|__  /___ _ __ _   _| |_/ ___|  ___  / _| |_ \n" +
+                "  / // _ \\ '__| | | | __\\___ \\ / _ \\| |_| __|\n" +
+                " / /|  __/ |  | |_| | |_ ___) | (_) |  _| |_ \n" +
+                "/____\\___|_|   \\__, |\\__|____/ \\___/|_|  \\__|\n" +
+                "               |___/                         ");
+        System.out.println("www.zeryter.tk");
+        System.out.println("https://github.com/Owen-Holloway101/P2P-CHAT");
 
         if (Files.notExists(P2PDIR)) {
             try {
@@ -27,5 +43,16 @@ public class P2PChatMain {
                 e.printStackTrace();
             }
         }
+
+        //Setup stuff for the messages
+        message.init();
+
+        Window window = new Window();
+        new Thread(window).start();
+
+        for (int i = 0; i <= 100 ;i++ )
+            Message.send("test" + i);
+
+        //System.exit(0);
     }
 }
