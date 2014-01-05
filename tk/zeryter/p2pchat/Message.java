@@ -14,14 +14,14 @@ import java.net.DatagramPacket;
 public class Message implements NetAction {
 
     public void init() {
-        Network.startListening(5555,1000);
-        Network.setNetAction(5555,this);
+        Network.startListening(5555, 1000);
+        Network.setNetAction(5555, this);
     }
 
     public static void send(String message) {
 
         //if not encrypted {
-        Network.send.bytearray(Crypt.utftobyte(message),"255.255.255.255",5555);
+        Network.send.bytearray(Crypt.utftobyte(message), "255.255.255.255", 5555);
         // } else {
         //Network.send.bytearray(Crypt.utftobyte(Crypt.encrypt(message)))
         //}

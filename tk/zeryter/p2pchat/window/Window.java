@@ -33,7 +33,7 @@ public class Window implements Runnable, ComponentListener {
         }
 
         //Set basic frame
-        frame.setSize(200,300);
+        frame.setSize(200, 300);
         frame.setIconImage(icon);
         frame.setTitle("[null title]");
         frame.addComponentListener(this);
@@ -42,21 +42,30 @@ public class Window implements Runnable, ComponentListener {
 
         init();
 
+        //Make sure everything is in the right place
+        frame.validate();
     }
 
     @Override
     public void componentResized(ComponentEvent e) {
+
         draw();
+
+        //Make sure everything is in the right place
+        frame.validate();
     }
 
     @Override
-    public void componentMoved(ComponentEvent e) {}
+    public void componentMoved(ComponentEvent e) {
+    }
 
     @Override
-    public void componentShown(ComponentEvent e) {}
+    public void componentShown(ComponentEvent e) {
+    }
 
     @Override
-    public void componentHidden(ComponentEvent e) {}
+    public void componentHidden(ComponentEvent e) {
+    }
 
 
     public void init() {

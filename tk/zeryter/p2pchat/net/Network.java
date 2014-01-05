@@ -25,7 +25,7 @@ public class Network implements Runnable {
 
     public static class send {
 
-        public static void bytearray(byte[] data,String host, int port) {
+        public static void bytearray(byte[] data, String host, int port) {
             try {
 
                 DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName(host), port);
@@ -49,7 +49,7 @@ public class Network implements Runnable {
 
     public static void startListening(Integer port, int PACKETSIZE) {
 
-        networkMap.put(port,new Network());
+        networkMap.put(port, new Network());
         networkMap.get(port).port = port;
         networkMap.get(port).PACKETSIZE = PACKETSIZE;
 
@@ -58,7 +58,7 @@ public class Network implements Runnable {
     }
 
 
-    public static void setNetAction(int port,NetAction newNetAction) {
+    public static void setNetAction(int port, NetAction newNetAction) {
         networkMap.get(port).netAction = newNetAction;
     }
 

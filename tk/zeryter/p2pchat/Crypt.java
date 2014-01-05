@@ -23,7 +23,7 @@ public class Crypt {
                 passchar = 0;
             }
 
-            encocodedChar[i] = (char)(((message.charAt(i)*pass.charAt(passchar)))+message.length());
+            encocodedChar[i] = (char) (((message.charAt(i) * pass.charAt(passchar))) + message.length());
 
             encodedMessage = encodedMessage + encocodedChar[i];
 
@@ -48,7 +48,7 @@ public class Crypt {
 
         int passchar = 0;
 
-        for (int i =0; i < output.length(); i++) {
+        for (int i = 0; i < output.length(); i++) {
 
             if (passchar < pass.length() - 1) {
 
@@ -58,7 +58,7 @@ public class Crypt {
                 passchar = 0;
             }
 
-            decodedChar[i] = (char)((output.charAt(i)-output.length())/pass.charAt(passchar));
+            decodedChar[i] = (char) ((output.charAt(i) - output.length()) / pass.charAt(passchar));
 
             decodedMessage = decodedMessage + decodedChar[i];
 

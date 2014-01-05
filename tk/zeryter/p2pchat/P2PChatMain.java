@@ -1,5 +1,6 @@
 package tk.zeryter.p2pchat;
 
+import tk.zeryter.p2pchat.window.MainWindow;
 import tk.zeryter.p2pchat.window.Window;
 
 import java.io.IOException;
@@ -18,6 +19,8 @@ public class P2PChatMain {
     //is everything running? this is the global variable
     public static boolean running = true;
 
+    //Global Variables
+
     //The main dir for P2P-CHAT, config files are stored here
     public static Path P2PDIR = Paths.get(System.getProperty("user.home") + "/.P2P-CHAT");
 
@@ -25,6 +28,8 @@ public class P2PChatMain {
     public static Message message = new Message();
 
     public static void main(String args[]) {
+
+        //About the application
         System.out.println("Owen Holloway, ZerytSoft, 2013");
         System.out.println(" _____               _   ____         __ _   \n" +
                 "|__  /___ _ __ _   _| |_/ ___|  ___  / _| |_ \n" +
@@ -44,14 +49,34 @@ public class P2PChatMain {
             }
         }
 
+        //ARGS
+        boolean GUI = true;
+
+        for (int i = 0; i < args.length; i++) {
+
+            if (args[i].equals("--nogui")) {
+                GUI = false;
+            }
+
+        }
+
+
         //Setup stuff for the messages
         message.init();
 
-        Window window = new Window();
-        new Thread(window).start();
+        //Input
 
-        for (int i = 0; i <= 100 ;i++ )
-            Message.send("test" + i);
+        //Console input
+        ConsoleInput consoleInput = new ConsoleInput();
+        new Thread(consoleInput).start();
+
+        //This is the main window
+        if (GUI) {
+            Window window = new MainWindow();
+            new Thread(window).start();
+        } else {
+            System.out.println("NO GUI");
+        }
 
         //System.exit(0);
     }
