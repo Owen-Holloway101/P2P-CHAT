@@ -5,6 +5,8 @@ import tk.zeryter.p2pchat.window.Window;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

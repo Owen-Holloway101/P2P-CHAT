@@ -4,6 +4,8 @@ import tk.zeryter.p2pchat.net.NetAction;
 import tk.zeryter.p2pchat.net.Network;
 
 import java.net.DatagramPacket;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Owen Holloway
@@ -18,19 +20,23 @@ public class Message implements NetAction {
         Network.setNetAction(P2PChatMain.PORT, this);
     }
 
-    public static void send(String message) {
+    public static void sendMessage(String message) {
 
         //if not encrypted {
         Network.send.bytearray(Crypt.utftobyte(message), "255.255.255.255", P2PChatMain.PORT);
         // } else {
-        //Network.send.bytearray(Crypt.utftobyte(Crypt.encrypt(message)))
+        //Network.sendMessage.bytearray(Crypt.utftobyte(Crypt.encrypt(message)))
         //}
     }
 
+    public void stop() {
+        Network.stopListening(P2PChatMain.PORT);
+    }
 
     @Override
     public void packetRecieved(DatagramPacket packet) {
-        System.out.println("Received: " + packet.getAddress() + ":" + Crypt.utftostring(packet.getData()));
     }
+
+    Map<String, String> userMap = new HashMap<String, String>();
 
 }

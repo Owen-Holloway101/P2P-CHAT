@@ -28,6 +28,7 @@ public class MainWindow extends Window implements ActionListener {
 
     //Edit menu items
     JMenuItem encryption;
+    JMenuItem setUserName;
     JMenuItem changePort;
 
     //Help menu items
@@ -66,11 +67,14 @@ public class MainWindow extends Window implements ActionListener {
         //edit Menu items
         encryption = new JMenuItem("Encryption");
         //encryption.addActionListener(this);
+        setUserName = new JMenuItem("Set User Name");
+        setUserName.addActionListener(this);
         changePort = new JMenuItem("Change Port");
         changePort.addActionListener(this);
 
         //Add to edit
         edit.add(encryption);
+        edit.add(setUserName);
         edit.add(changePort);
 
         menuBar.add(help);

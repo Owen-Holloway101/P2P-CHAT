@@ -43,8 +43,8 @@ public class ConsoleInput implements Runnable {
             }
 
             if (inputString.length() >= 4) {
-                if (inputString.substring(0, 4).equals("send")) {
-                    Message.send(inputString.substring(5, inputString.length()));
+                if (inputString.substring(0, 4).equals("sendMessage")) {
+                    Message.sendMessage(inputString.substring(5, inputString.length()));
                 }
             }
         }

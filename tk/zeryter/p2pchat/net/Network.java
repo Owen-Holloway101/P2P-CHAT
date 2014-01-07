@@ -30,7 +30,7 @@ public class Network implements Runnable {
 
                 DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName(host), port);
 
-                // Create a datagram socket, send the packet through it, close it.
+                // Create a datagram socket, sendMessage the packet through it, close it.
                 DatagramSocket dsocket = new DatagramSocket();
                 dsocket.send(packet);
                 dsocket.close();
@@ -62,6 +62,14 @@ public class Network implements Runnable {
         networkMap.get(port).netAction = newNetAction;
     }
 
+    public static void stopListening(Integer port) {
+        networkMap.get(port).stop();
+    }
+
+    public static void removeNetAction(int port, NetAction netAction) {
+        networkMap.get(port).netAction = null;
+    }
+
     //Main body of class instance
 
     public int port;
@@ -69,13 +77,17 @@ public class Network implements Runnable {
 
     NetAction netAction;
 
+    boolean listening = true;
+
     public void run() {
 
         init();
 
-        while (P2PChatMain.running) {
+        while (P2PChatMain.running && listening) {
             loop();
         }
+
+        System.out.println("Stopped listening on port: " + port);
 
     }
 
@@ -119,5 +131,9 @@ public class Network implements Runnable {
 
         netAction.packetRecieved(packet);
 
+    }
+
+    public void stop() {
+        listening = false;
     }
 }
