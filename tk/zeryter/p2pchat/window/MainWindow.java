@@ -3,6 +3,7 @@ package tk.zeryter.p2pchat.window;
 import tk.zeryter.p2pchat.P2PChatMain;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,10 +33,21 @@ public class MainWindow extends Window implements ActionListener {
     //Help menu items
     JMenuItem about;
 
+    //Containers
+    Container mainContainer;
+
+    //Widgets
+    JTextArea output;
+    JScrollPane outputScroll;
+
     @Override
     public void init() {
+
+        //MenuBar setup
         menuBar = new JMenuBar();
         menuBar.setBounds(0, 0, frame.getContentPane().getWidth(), 20);
+
+        //MenuBar items
         file = new JMenu("File");
         edit = new JMenu("Edit");
         help = new JMenu("Help");
@@ -70,8 +82,32 @@ public class MainWindow extends Window implements ActionListener {
         //add to Help
         help.add(about);
 
+        //Container setup
+        mainContainer = new Container();
+
+        //Widget setup
+        output = new JTextArea();
+        output.setEditable(true);
+        outputScroll = new JScrollPane(output);
+        outputScroll.createVerticalScrollBar();
+        mainContainer.add(outputScroll);
+
+        //Frame final setup
+        frame.setTitle("P2P-CHAT_V2: infdev");
+        frame.setSize(400,600);
         frame.setJMenuBar(menuBar);
+        frame.getContentPane().add(mainContainer);
         frame.addWindowListener(new WindowMonitor());
+    }
+
+    @Override
+    public void draw() {
+        //Set mainContainers bound to fill the content pane
+        mainContainer.setBounds(0,0,frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
+
+        //Set widget bounds
+        outputScroll.setBounds(0,0,mainContainer.getWidth(),mainContainer.getHeight() - 40);
+
     }
 
     @Override

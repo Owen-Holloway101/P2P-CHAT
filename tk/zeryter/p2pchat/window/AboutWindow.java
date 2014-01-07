@@ -34,7 +34,7 @@ public class AboutWindow extends Window {
         firstRun = false;
 
         //setup widgets
-        textLabel1 = new JLabel("ZerytSoft 2013");
+        textLabel1 = new JLabel("ZerytSoft 2014");
         textLabel2 = new JLabel("www.zeryter.tk");
         textLabel3 = new JLabel("Owen Holloway, aka Zeryter");
         textLabel4 = new JLabel("https://github.com/Owen-Holloway101/P2P-CHAT");
@@ -53,6 +53,8 @@ public class AboutWindow extends Window {
         container.add(textLabel4);
         container.add(iconLabel);
 
+        //Frame final setup
+        frame.setTitle("About");
         frame.setResizable(false);
         frame.addWindowListener(new AboutWindowMonitor());
     }

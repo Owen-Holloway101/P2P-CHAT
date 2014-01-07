@@ -32,7 +32,7 @@ public class P2PChatMain {
     public static void main(String args[]) {
 
         //About the application
-        System.out.println("Owen Holloway, ZerytSoft, 2013");
+        System.out.println("Owen Holloway, ZerytSoft, 2014");
         System.out.println(" _____               _   ____         __ _   \n" +
                 "|__  /___ _ __ _   _| |_/ ___|  ___  / _| |_ \n" +
                 "  / // _ \\ '__| | | | __\\___ \\ / _ \\| |_| __|\n" +
