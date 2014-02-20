@@ -1,0 +1,17 @@
+========================================================================================================================
+
+
+void sendUtf8Byte; byte mode,byte[] data, String host, int port:
+
+
+
+    open stream of port port and address host;
+
+    send packet with [ mode | data[] ];
+
+    close stream;
+
+
+end method
+
+========================================================================================================================

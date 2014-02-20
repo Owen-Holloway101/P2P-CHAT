@@ -1,0 +1,29 @@
+========================================================================================================================
+NOTE ON THIS FILE: IT USES MULTIPLE CLASSES IN THE JAVA FILE I SHALL REFER TO EACH UNDER ITS OWN HEADING
+
+Also if this looks the same as other GUI docs ts because it is.
+========================================================================================================================
+
+MainWindow Class
+
+------------------------------------------------------------------------------------------------------------------------
+
+The run and init methods are very similar and setup the application frame and GUI elements.
+
+the frame has a WindowMonitor and Component listener to check for resize and close
+
+the draw method is run each time the main window is resized
+
+the actionPerformed checks to see what element has called it
+
+------------------------------------------------------------------------------------------------------------------------
+
+MainWindowMonitor class
+
+------------------------------------------------------------------------------------------------------------------------
+
+This runs the method windowClosing when and window close is requested. It exits the system.
+
+------------------------------------------------------------------------------------------------------------------------
+
+========================================================================================================================

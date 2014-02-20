@@ -1,0 +1,68 @@
+========================================================================================================================
+
+NOTE: As this is a GUI class it is heavily simplified (I don't see any point in defining each GUI element)
+also if this looks the same as other GUI class algorithms its because it is.
+
+main class methods:
+
+init:
+
+    Create frame
+
+    set frame size
+
+    create menubar and add to frame
+
+    create container for wigets and add to frame
+
+    create widgets and add to container
+
+    run draw
+
+/init
+
+draw:
+
+    set menubar bounds
+
+    set container bounds
+
+    set widgets bounds
+
+/draw
+
+actionEvent:
+
+    if start application is source:
+
+        if username is input and port selected true:
+            start MainWindow
+            close AboutWindow
+        else if username is input:
+            prompt for port
+        else if port is selected:
+            prompt for username
+        else:
+            prompt for username and port
+
+/actionEvent
+
+windowResized:
+
+    run draw method
+
+/windowResized
+
+/main class methods
+
+windowMonitor methods
+
+window close request:
+
+    end application
+
+/window close request
+
+/windowMonitor methods
+
+========================================================================================================================

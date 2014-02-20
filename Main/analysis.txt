@@ -1,0 +1,18 @@
+========================================================================================================================
+Objectives:
+
+- P2P chat over lan and internet.
+- Simple, easy to use, ‘obvious UI’
+- Swarms.
+- Users with alias
+- Swarms live and die out due to use
+
+========================================================================================================================
+
+Mid way re-assessment of objectives:
+
+- Chat without the need of a server
+- No need for IP connecting
+- Basic encryption
+
+========================================================================================================================

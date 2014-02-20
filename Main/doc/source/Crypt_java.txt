@@ -1,0 +1,19 @@
+========================================================================================================================
+
+This is a method for a very basic encryption
+
+Methods implemented:
+
+Encode:
+    - takes a string and turns it into a encoded utf8 byte array
+
+Decode:
+    - takes a encoded utf8 byte array and turns it into a string
+
+utftobyte:
+    - converts string to utf8 byte array
+
+utftostring
+    - converts a utf8 byte array to a string
+
+========================================================================================================================

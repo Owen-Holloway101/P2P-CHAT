@@ -1,0 +1,46 @@
+========================================================================================================================
+
+                                     Client OS: Ubuntu linux 13.04
+
+                               Single chat application sending to itself (no encryption)
+                      Message input                     #                        Message output
+"test1"                                                 # /10.76.151.123: Test 1                               # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /10.76.151.123: abcdefghijklmnopqrstuvwxyz           # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /10.76.151.123: zyxwvutsrqponmlkjihgfedcba           # PASS
+                                                        #                                                      #
+
+Test passed: TRUE
+
+                               Single chat application sending to itself (with encryption [pass: password123])
+                    Message input                       #                        Message output
+"test1"                                                 # /10.76.151.123: test1                                # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /10.76.151.123: abcdefghijklmnopqrstuvwxyz           # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /10.76.151.123: zyxwvutsrqponmlkjihgfedcba           # PASS
+                                                        #                                                      #
+Test passed: TRUE
+
+                                  Receive from remote chat application (no encryption)
+                    Message input (sender)              #                        Message output
+"test1"                                                 # /192.168.1.4: test1                                  # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
+                                                        #                                                      #
+Test passed: TRUE
+
+                                  Receive from remote chat application (with encryption [pass: password123])
+                    Message input (sender)              #                        Message output
+"test1"                                                 # /192.168.1.4: test1                                  # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: abcdefghijklmnopqrstuvwxyz             # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: zyxwvutsrqponmlkjihgfedcba             # PASS
+                                                        #                                                      #
+Test passed: TRUE
+
+                         Receive from remote chat application with no pass on local (with encryption [pass: password123])
+                    Message input (sender)              #                        Message output
+"test1"                                                 # /192.168.1.4: [encrypted text]                       # PASS
+"abcdefghijklmnopqrstuvwxyz"                            # /192.168.1.4: [encrypted text]                       # PASS
+"zyxwvutsrqponmlkjihgfedcba"                            # /192.168.1.4: [encrypted text]                       # PASS
+                                                        #                                                      #
+Test passed: TRUE
+
+========================================================================================================================

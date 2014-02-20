@@ -1,0 +1,67 @@
+========================================================================================================================
+
+
+byte[] encode; string input, string pass :
+
+    convert input into UTF8 bytes array inputByte;
+
+    convert pass into UTF8 bytes array passByte;
+
+
+    make encodedByte[] equal to  UTF8 inputByte minus ( passByte modulus of input length)
+
+
+return encodedByte
+
+end method
+
+
+========================================================================================================================
+
+
+string decode; byte input, string pass :
+
+    convert pass into UTF8 bytes array passByte;
+
+
+
+    make decodedByte[] equal to  UTF8 inputByte plus ( passByte modulus of input length)
+
+
+    string output equals decodedByte converted into UTF8
+
+
+return string
+
+end method
+
+
+========================================================================================================================
+
+
+byte[] stringToUtf8Byte; string input:
+
+
+    byte[] outputByte equals input converted into UTF8 byte
+
+
+
+return outputByte[]
+
+end method
+
+
+========================================================================================================================
+
+
+string utf8ToString; byte[] input:
+
+
+    string output equals input converted into UTF8 string
+
+
+return output
+
+end method
+
+========================================================================================================================

@@ -1,0 +1,6 @@
+========================================================================================================================
+
+This is a container for global variables, I found this made the code a little more tidy and I could access class
+instances better using it. I am fairly sure that this is not common practice but it worked well for me.
+
+========================================================================================================================
